@@ -1,0 +1,54 @@
+@import url(../../../styles/_fonts.scss);
+
+.decor{
+  width: 790px;
+  height: 360px;
+  background-color: #54a6ff;
+  border-radius: 10px;
+  background-image: url("../../../assets/decor-bg-circles.svg");
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 150px;
+  .inner_container{
+    width: 90%;
+    height: 100%;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    .decor_text{
+      font-family: BPGSquare;
+      color: #fff;
+    }
+
+    .decor_paragraph{
+      font-family: BPGSquare;
+      color: #fff;
+      font-size: 23px;
+    }
+    .paragraph_container{
+      margin-top: 30px;
+    }
+
+    .rent_button{
+      width: 120px;
+      height: 45px;
+      background-color: #3563e9;
+      border-radius: 4px;
+      border: 0;
+      outline: 0;
+      font-family: BPGSquare;
+      font-size: 20px;
+      color: #fff;
+      margin-top: 20px;
+      cursor: pointer;
+
+      &:hover{
+        background-color: #153491;
+      }
+    }
+  }
+}

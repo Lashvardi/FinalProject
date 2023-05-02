@@ -1,0 +1,12 @@
+.container{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .inner_box{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 87%;
+  }
+}
