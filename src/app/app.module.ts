@@ -10,7 +10,8 @@ import { LandingRightComponent } from './components/landing-right/landing-right.
 import { CarsCardComponent } from './components/cars-card/cars-card.component';
 import {SwiperModule} from 'swiper/angular';
 import {HttpClientModule } from '@angular/common/http';
-
+import { AddCarPageComponent } from './components/add-car-page/add-car-page.component';
+import { FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,12 +21,14 @@ import {HttpClientModule } from '@angular/common/http';
     LandingLeftComponent,
     LandingRightComponent,
     CarsCardComponent,
+    AddCarPageComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     SwiperModule,
     HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

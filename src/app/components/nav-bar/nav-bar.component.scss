@@ -25,5 +25,26 @@
         filter: invert(49%) sepia(68%) saturate(3687%) hue-rotate(333deg) brightness(92%) contrast(102%);
       }
     }
+
+    .Login_button{
+      width: 90px;
+      height: 35px;
+      border-radius: 8px;
+      background-color: #3563e9;
+      color: #fff;
+      font-family: 'Noto Sans Georgian', sans-serif !important;
+
+    }
+
+    .Logout_button{
+      width: 90px;
+      height: 35px;
+      border-radius: 8px;
+      background-color: #b7821d;
+      color: #fff;
+      font-family: 'Noto Sans Georgian', sans-serif !important;
+
+    }
   }
 }
+

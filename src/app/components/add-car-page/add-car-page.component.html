@@ -1,0 +1,12 @@
+<app-nav-bar></app-nav-bar>
+<form (submit)="onSubmit()">
+  <div>
+    <label for="phoneNumber">Phone Number:</label>
+    <input type="text" name="phoneNumber" [(ngModel)]="user.phoneNumber" required />
+  </div>
+  <div>
+    <label for="password">Password:</label>
+    <input type="password" name="password" [(ngModel)]="user.password" required />
+  </div>
+  <button type="submit">Login</button>
+</form>

@@ -14,5 +14,9 @@
     <div class="nav_item hoverable">
       <a routerLink="/settings"><img src="../../../assets/settings-icon.svg" alt=""></a>
     </div>
+    <div class="nav_item">
+      <button *ngIf="!AuthService.isLoggedIn()" class="Login_button">შესვლა</button>
+      <button *ngIf="AuthService.isLoggedIn()" (click)="AuthService.logout()" class="Logout_button">გამოსვლა</button>
+    </div>
   </div>
 </div>
