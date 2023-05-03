@@ -1,0 +1,107 @@
+@import url(../../../styles/_fonts.scss);
+@import url(../../../styles/_helper.scss);
+
+.card_body{
+  width: 304px;
+  height: auto;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+
+  .inner_container{
+    width: 90%;
+    .header_container{
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-family: 'Plus Jakarta Sans';
+
+      .favorite_button{
+        outline: none;
+        border: 0;
+      }
+
+      .car_brand{
+        font-size: 20px;
+        letter-spacing: -0.03em;
+        color: #1A202C;
+        font-weight: 700;
+      }
+
+      .car_model{
+        font-size: 14px;
+        letter-spacing: -0.02em;
+        color: #90A3BF;
+        font-weight: 700;
+      }
+    }
+
+
+    .swiper_body{
+      width: 100%;
+
+      .slide_Image {
+        width: 100%;
+        height: 230px;
+        object-fit: cover;
+        object-position: center;
+      }
+
+    }
+
+
+    .details_box{
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: 'Noto Sans Georgian', sans-serif;
+      color: #90A3BF;
+      letter-spacing: -0.02em;
+      font-size: 14px;
+      margin-top: 20px;
+    }
+
+    .price_box{
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 25px;
+      .price_side{
+        display: flex;
+        font-family: 'Plus Jakarta Sans';
+        .price{
+          font-weight: 700;
+          color: #1A202C;
+          font-size: 20px;
+        }
+
+        .per_day{
+          color: #90A3BF;
+          font-family: 'Noto Sans Georgian', sans-serif;
+          font-size: 14px;
+          margin-top: 5px;
+        }
+      }
+    }
+
+    .rent_button{
+      width: 90px;
+      height: 45px;
+      background-color: #3563e9;
+      border-radius: 4px;
+      border: 0;
+      outline: 0;
+      font-family: BPGSquare;
+      font-size: 17px;
+      color: #fff;
+      cursor: pointer;
+
+      &:hover{
+        background-color: #153491;
+      }
+    }
+  }
+}

@@ -1,12 +1,16 @@
 .container{
   width: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
-  .inner_box{
-    display: flex;
+  flex-wrap: wrap;
+}
+
+
+@media screen and (max-width: 750px) {
+  .container{
     align-items: center;
     justify-content: center;
-    width: 87%;
   }
 }
+

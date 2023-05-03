@@ -1,113 +1,58 @@
-@for $i from 0 through 25 {
-    .mt-#{$i} {
-      margin-top: #{5 * $i}px !important;
-    }
-  }
-  
-  @for $i from 0 through 25 {
-    .ml-#{$i} {
-      margin-left: #{5 * $i}px !important;
-    }
-  }
-  
-  @for $i from 0 through 25 {
-    .mr-#{$i} {
-      margin-right: #{5 * $i}px !important;
-    }
-  }
-  
-  @for $i from 0 through 8 {
-    .mb-#{$i} {
-      margin-bottom: #{5 * $i}px !important;
-    }
-  }
-  
-  @for $i from 1 through 9 {
-    .fw-#{$i} {
-      font-weight: #{100 * $i} !important;
-    }
-  }
-  
-  @for $i from 0 through 8 {
-    .pb-#{$i} {
-      padding-bottom: #{5 * $i}px;
-    }
-  }
-  
-  @for $i from 0 through 100 {
-    .fs-#{$i} {
-      font-size: #{$i}px !important;
-    }
-  }
-  
-  
-  @for $i from 0 through 8 {
-    .pt-#{$i} {
-      padding-top: #{5 * $i}px;
-    }
-  }
-  
-  @for $i from 0 through 8 {
-    .plr-#{$i} {
-      padding-left: #{5 * $i}px;
-      padding-right: #{5 * $i}px;
-    }
-  }
-  
+
   .m-0{
     margin: 0 !important;
   }
   .p-0 {
     padding: 0 !important;
   }
-  
+
   .pt-0 {
     padding-top: 0 !important;
   }
-  
+
   .pb-0 {
     padding-bottom: 0 !important;
   }
-  
+
   .mt-auto {
     margin-top: auto !important;
   }
-  
-  
-  
+
+
+
   .d-block {
     display: block;
   }
-  
+
   .d-flex {
     display: flex;
   }
-  
+
   .flex-full{
     display: flex;
     align-items: center;
     justify-content: center;
   }
-  
+
   .flex-direction-column {
     flex-direction: column;
   }
-  
+
   .none{
     text-decoration: none !important;
   }
-  
-  
+
+
   .text-center{
     text-align: center !important;
   }
-  
+
   .flex-center {
     display: flex !important;
     justify-content: center;
     align-items: center;
   }
-  
+
   .pointer{
     cursor: pointer !important;
   }

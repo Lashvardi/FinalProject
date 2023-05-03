@@ -1,7 +1,10 @@
 @import url(../../../styles/_fonts.scss);
+*{
+  font-family: 'Noto Sans Georgian', sans-serif !important;
+}
 
 .decor{
-  width: 790px;
+  width: 740px;
   height: 360px;
   background-color: #3563e9;
   border-radius: 10px;
@@ -10,6 +13,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  font-family: 'Noto Sans Georgian', sans-serif;
   .inner_container{
     width: 90%;
     height: 100%;
@@ -40,7 +44,7 @@
       border: 0;
       outline: 0;
       font-family: BPGSquare;
-      font-size: 20px;
+      font-size: 17px;
       color: #fff;
       margin-top: 20px;
       cursor: pointer;
@@ -49,5 +53,20 @@
         background-color: #7cb7f7;
       }
     }
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .decor{
+    width: 500px;
+    background-position-x: -20px;
+  }
+}
+
+
+@media screen and (max-width: 513px) {
+  .decor{
+    width: 375px;
+    background-position-x: 90px;
   }
 }
