@@ -14,10 +14,15 @@ export class AuthServiceService {
   register(user: User): Observable<any> {
     return this.http.post<any>(`${this.apiUrl}/register`, user);
   }
+
+
   login(user: User): Observable<any> {
     return this.http.post<any>(`${this.apiUrl}/login`, user).pipe(
       tap((response) => {
         localStorage.setItem('jwtToken', response.token);
+        console.log('====================================');
+        console.log(response);
+        console.log('====================================');
       })
     );
   }

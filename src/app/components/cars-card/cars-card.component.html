@@ -2,8 +2,8 @@
   <div class="inner_container">
     <div class="header_container">
       <div class="title_side">
-        <h1 class="car_brand">{{cars[0].brand}}</h1>
-        <h2 class="car_model">{{cars[0].model}}/<span class="car_model year">{{cars[0].year}} წლის</span></h2>
+        <h1 class="car_brand">{{car?.brand}}</h1>
+        <h2 class="car_model">{{car?.model}}/<span class="car_model year">{{car?.year}} წლის</span></h2>
 
       </div>
 
@@ -15,28 +15,28 @@
     </div>
 
     <div class="swiper_body">
-      <swiper *ngIf="cars[0].imageUrl1" [slidesPerView]="1" [spaceBetween]="10" [navigation]="true" [pagination]="{ clickable: true }">
-        <ng-template swiperSlide><img class="slide_Image" src="{{cars[0].imageUrl1}}" alt=""></ng-template>
-        <ng-template swiperSlide><img class="slide_Image" src="{{cars[0].imageUrl2}}" alt=""></ng-template>
-        <ng-template swiperSlide><img class="slide_Image" src="{{cars[0].imageUrl3}}" alt=""></ng-template>
+      <swiper *ngIf="car?.imageUrl1" [slidesPerView]="1" [spaceBetween]="10" [navigation]="true" [pagination]="{ clickable: true }">
+        <ng-template swiperSlide><img class="slide_Image" src="{{car?.imageUrl1}}" alt=""></ng-template>
+        <ng-template swiperSlide><img class="slide_Image" src="{{car?.imageUrl2}}" alt=""></ng-template>
+        <ng-template swiperSlide><img class="slide_Image" src="{{car?.imageUrl3}}" alt=""></ng-template>
       </swiper>
     </div>
 
     <div class="details_box">
       <div class="fuel flex-full">
         <img src="../../../assets/fuel-icon.svg" alt="">
-        <span>{{cars[0].fuelCapacity}}ლ</span>
+        <span>{{car?.fuelCapacity}}ლ</span>
       </div>
 
       <div class="gaerbox flex-full">
         <img src="../../../assets/gearbox-icon.svg" alt="">
-        <span>{{cars[0].transmission}}</span>
+        <span>{{car?.transmission}}</span>
 
       </div>
 
       <div class="capacity flex-full">
         <img src="../../../assets/capacity-icon.svg" alt="">
-        <span>{{cars[0].capacity}}კაცი</span>
+        <span>{{car?.capacity}}კაცი</span>
       </div>
     </div>
 

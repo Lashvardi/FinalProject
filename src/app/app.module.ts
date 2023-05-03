@@ -12,6 +12,7 @@ import {SwiperModule} from 'swiper/angular';
 import {HttpClientModule } from '@angular/common/http';
 import { AddCarPageComponent } from './components/add-car-page/add-car-page.component';
 import { FormsModule } from '@angular/forms';
+import { CarListComponent } from './components/car-list/car-list.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,6 +23,7 @@ import { FormsModule } from '@angular/forms';
     LandingRightComponent,
     CarsCardComponent,
     AddCarPageComponent,
+    CarListComponent,
   ],
   imports: [
     BrowserModule,
