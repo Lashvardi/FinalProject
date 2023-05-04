@@ -17,6 +17,9 @@ import { AuthPageComponent } from './components/auth-page/auth-page.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RegisteredSuccesfulyComponent } from './components/registered-succesfuly/registered-succesfuly.component';
 import { LoginComponent } from './components/login/login.component';
+import { FilteredComponent } from './components/filtered/filtered.component';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,6 +34,7 @@ import { LoginComponent } from './components/login/login.component';
     AuthPageComponent,
     RegisteredSuccesfulyComponent,
     LoginComponent,
+    FilteredComponent,
   ],
   imports: [
     BrowserModule,
@@ -38,7 +42,8 @@ import { LoginComponent } from './components/login/login.component';
     SwiperModule,
     HttpClientModule,
     FormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    BsDatepickerModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]
