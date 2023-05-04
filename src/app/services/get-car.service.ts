@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ServiceUrlBuilder } from 'src/ServiceUrlBuilder';
 import { Car } from '../models/car';
+import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
@@ -26,5 +27,10 @@ export class GetCarService {
   public getCarsByCityAndYear(cityName: string, startYear: number, endYear: number) {
     const url = `${GetCarService.RESOURCE_URI}/byCityAndYear?cityName=${cityName}&startYear=${startYear}&endYear=${endYear}`;
     return this.http.get<Car[]>(ServiceUrlBuilder.buildUrl(url));
+  }
+
+  public getCities(): Observable<string[]> {
+    const url = `Car/cities`;
+    return this.http.get<string[]>(ServiceUrlBuilder.buildUrl(url));
   }
 }

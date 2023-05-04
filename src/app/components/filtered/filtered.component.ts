@@ -12,8 +12,16 @@ export class FilteredComponent {
   cars: Car[] = [];
   public cityName: string = '';
   public yearRange: string = '';
+  public cities: string[] = [];
   constructor(public getCar: GetCarService){
+    this.getCar.getCities()
+    .subscribe(cities => {
+      this.cities = cities;
+    }, error => {
+      console.error(error);
+    });
 
+    
     this.getCar.getCarsByYear(2015, 2020)
   .subscribe(cars => {
       this.cars = cars;
