@@ -11,6 +11,8 @@ export class AddCarPageComponent {
   user: User = {
     phoneNumber: '',
     password: '',
+    FirstName: '',
+    lastName: ''
   };
 
   constructor(private authService: AuthServiceService) {}

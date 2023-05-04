@@ -13,6 +13,9 @@ import {HttpClientModule } from '@angular/common/http';
 import { AddCarPageComponent } from './components/add-car-page/add-car-page.component';
 import { FormsModule } from '@angular/forms';
 import { CarListComponent } from './components/car-list/car-list.component';
+import { AuthPageComponent } from './components/auth-page/auth-page.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RegisteredSuccesfulyComponent } from './components/registered-succesfuly/registered-succesfuly.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,13 +27,16 @@ import { CarListComponent } from './components/car-list/car-list.component';
     CarsCardComponent,
     AddCarPageComponent,
     CarListComponent,
+    AuthPageComponent,
+    RegisteredSuccesfulyComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     SwiperModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
