@@ -49,3 +49,20 @@
   }
 }
 
+
+@media screen and (max-width: 530px){
+  .navbar_container{
+    justify-content: space-between;
+    padding: 0;
+  }
+
+  .right_side{
+    .nav_item{
+      margin-right: 0 !important;
+    }
+  }
+}
+
+
+
+

@@ -4,14 +4,15 @@
     font-family: 'Noto Sans Georgian', sans-serif !important;
 }
 
-
 .registration_box{
     width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-direction: row-reverse;
-    height: 90vh;
+    height: 100vh;
+    overflow: hidden;
+
     .right_side{
         width: 50%;
         display: flex;
@@ -33,10 +34,9 @@
     .left_side{
         width: 70%;
         background-image: url('../../../assets/Decoration_Image.png');
-        background-position-y: -165px;
-        background-position-x: 45px;
+        background-position: 45px -165px;
         height: 100%;
         background-repeat: no-repeat;
-        background-size: 95%;
+        background-size: cover;
     }
 }
