@@ -16,6 +16,7 @@ import { CarListComponent } from './components/car-list/car-list.component';
 import { AuthPageComponent } from './components/auth-page/auth-page.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RegisteredSuccesfulyComponent } from './components/registered-succesfuly/registered-succesfuly.component';
+import { LoginComponent } from './components/login/login.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,6 +30,7 @@ import { RegisteredSuccesfulyComponent } from './components/registered-succesful
     CarListComponent,
     AuthPageComponent,
     RegisteredSuccesfulyComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,

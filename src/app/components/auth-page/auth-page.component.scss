@@ -11,7 +11,7 @@
     justify-content: space-between;
     align-items: center;
     flex-direction: row-reverse;
-    height: 85vh;
+    height: 90vh;
     .right_side{
         width: 50%;
         display: flex;
@@ -33,8 +33,10 @@
     .left_side{
         width: 70%;
         background-image: url('../../../assets/Decoration_Image.png');
-        background-position-y: -175px;
+        background-position-y: -165px;
+        background-position-x: 45px;
         height: 100%;
         background-repeat: no-repeat;
+        background-size: 95%;
     }
 }
