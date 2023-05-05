@@ -1,12 +1,14 @@
 @import url(../../../styles/_fonts.scss);
 @import url(../../../styles/_helper.scss);
 
+
 .card_body{
   width: 304px;
   height: auto;
   border-radius: 10px;
   display: flex;
   justify-content: center;
+  background-color: #fff;
 
   .inner_container{
     width: 90%;
@@ -18,8 +20,15 @@
       font-family: 'Plus Jakarta Sans';
 
       .favorite_button{
-        outline: none;
-        border: 0;
+        outline: none !important;
+        border: 0 !important;
+        background-color: transparent;
+
+        &:hover{
+          .hover_Red{
+            filter: invert(49%) sepia(68%) saturate(3687%) hue-rotate(333deg) brightness(92%) contrast(102%);
+          }
+        }
       }
 
       .car_brand{
@@ -96,8 +105,8 @@
       border-radius: 4px;
       border: 0;
       outline: 0;
-      font-family: BPGSquare;
-      font-size: 17px;
+      font-family: 'Noto Sans Georgian', sans-serif;
+      font-size: 14px;
       color: #fff;
       cursor: pointer;
 

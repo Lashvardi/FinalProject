@@ -1,0 +1,17 @@
+<div class="outter_container">
+    <div class="flex_box">
+    </div>
+</div>
+
+<div class="centerer">
+    <div class="outter_box">
+        <div class="header_box">
+            <h1 class="popular_cars">პოპულარული მანქანები</h1>
+    
+        </div>
+    
+        <div class="cards_box">
+            <app-cars-card *ngFor="let car of cars" [car]="car"></app-cars-card>
+        </div>
+    </div>
+</div>

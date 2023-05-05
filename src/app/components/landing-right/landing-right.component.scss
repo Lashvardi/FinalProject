@@ -66,7 +66,11 @@
 
 @media screen and (max-width: 513px) {
   .decor{
-    width: 375px;
+    width: 345px;
     background-position-x: 90px;
+  }
+
+  .inner_container{
+    padding: 10px !important;
   }
 }

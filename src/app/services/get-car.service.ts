@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ServiceUrlBuilder } from 'src/ServiceUrlBuilder';
 import { Car } from '../models/car';
@@ -7,13 +7,25 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class GetCarService {
+
   private static RESOURCE_URI: string = "Car";
+  private static Popular_URi: string = "Car/popular";
   constructor(private http: HttpClient) { }
 
   public GetCars() {
     return this.http.get<Car[]>(ServiceUrlBuilder.buildUrl(GetCarService.RESOURCE_URI));
   }
 
+  getPopularCars() {
+    return this.http.get<Car[]>(ServiceUrlBuilder.buildUrl(GetCarService.Popular_URi));
+  }
+
+  public GetCarsPaginated(pageNumber: number, pageSize: number) {
+    const params = new HttpParams()
+      .set('pageNumber', pageNumber.toString())
+      .set('pageSize', pageSize.toString());
+    return this.http.get<Car[]>(ServiceUrlBuilder.buildUrl(GetCarService.RESOURCE_URI), { params });
+  }
   getCarsByYear(startYear: number, endYear: number) {
     const url = `Car/byYear?startYear=${startYear}&endYear=${endYear}`;
     return this.http.get<Car[]>(ServiceUrlBuilder.buildUrl(url));

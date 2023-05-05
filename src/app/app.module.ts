@@ -19,6 +19,10 @@ import { RegisteredSuccesfulyComponent } from './components/registered-succesful
 import { LoginComponent } from './components/login/login.component';
 import { FilteredComponent } from './components/filtered/filtered.component';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { PopularCarsComponent } from './components/popular-cars/popular-cars.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { ChooseRegisterTypeComponent } from './components/choose-register-type/choose-register-type.component';
+import { BusinnesAuthComponent } from './components/businnes-auth/businnes-auth.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +39,10 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
     RegisteredSuccesfulyComponent,
     LoginComponent,
     FilteredComponent,
+    PopularCarsComponent,
+    FooterComponent,
+    ChooseRegisterTypeComponent,
+    BusinnesAuthComponent,
   ],
   imports: [
     BrowserModule,

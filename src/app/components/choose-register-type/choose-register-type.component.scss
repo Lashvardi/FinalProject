@@ -1,0 +1,29 @@
+.type_container{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    outline: dotted red 1px;
+
+    .inner_container{
+        width: 40%;
+        outline: blue 5px dotted;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        height: 70 vh;
+
+        .left_side{
+            height: 200px;
+            width: 50%;
+            background-color: red;
+        }
+
+        .right_side{
+            height: 200px;
+            width: 50%;
+            background-color: blue;
+        }
+    }
+}

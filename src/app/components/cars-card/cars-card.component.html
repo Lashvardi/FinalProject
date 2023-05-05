@@ -9,7 +9,9 @@
 
       <div class="favorite_side">
         <button class="favorite_button">
-          <img src="../../../assets/favorite-icon.svg" alt="">
+          <button class="favorite_button" (click)="car && addToFavorites(car.id)">
+            <img class="hover_Red" src="../../../assets/favorite-icon.svg" alt="">
+          </button>
         </button>
       </div>
     </div>
@@ -44,7 +46,7 @@
 
     <div class="price_box">
       <div class="price_side">
-        <h1 class="price">{{car?.Price}}/</h1>
+        <h1 class="price">{{car?.price}}₾/</h1>
         <h2 class="per_day">დღიური</h2>
       </div>
 

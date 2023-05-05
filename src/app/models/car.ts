@@ -9,5 +9,5 @@ export interface Car {
   capacity:     number;
   transmission: string;
   fuelCapacity: number;
-  Price:        number;
+  price:        number;
 }

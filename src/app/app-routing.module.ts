@@ -6,6 +6,8 @@ import { AuthPageComponent } from './components/auth-page/auth-page.component';
 import { RegisteredSuccesfulyComponent } from './components/registered-succesfuly/registered-succesfuly.component';
 import { LoginComponent } from './components/login/login.component';
 import { FilteredComponent } from './components/filtered/filtered.component';
+import { ChooseRegisterTypeComponent } from './components/choose-register-type/choose-register-type.component';
+import { BusinnesAuthComponent } from './components/businnes-auth/businnes-auth.component';
 
 const routes: Routes = [
   {
@@ -18,7 +20,15 @@ const routes: Routes = [
   },
   {
     path: 'Authorization',
+    component: ChooseRegisterTypeComponent,
+  },
+  {
+    path: 'AuthorizationUser',
     component: AuthPageComponent,
+  },
+  {
+    path: 'AuthorizationBusiness',
+    component: BusinnesAuthComponent,
   },
   {
     path: 'Registered',
