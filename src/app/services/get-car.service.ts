@@ -31,15 +31,19 @@ export class GetCarService {
     return this.http.get<Car[]>(ServiceUrlBuilder.buildUrl(`${GetCarService.Favorite_URI}/${phoneNumber}/favorite-cars`));
   }
   
-
-  public GetCarsPaginated(pageNumber: number, pageSize: number) {
-    const params = new HttpParams()
-      .set('pageNumber', pageNumber.toString())
-      .set('pageSize', pageSize.toString());
-    return this.http.get<Car[]>(ServiceUrlBuilder.buildUrl(GetCarService.RESOURCE_URI), { params });
+  public getCapacityFilteredCars(capacity: number): Observable<Car[]> {
+    return this.http.get<Car[]>(ServiceUrlBuilder.buildUrl(`${GetCarService.RESOURCE_URI}/byCapacity?capacity=${capacity}`));
   }
+  
+
+
   getCarsByYear(startYear: number, endYear: number) {
     const url = `Car/byYear?startYear=${startYear}&endYear=${endYear}`;
+    return this.http.get<Car[]>(ServiceUrlBuilder.buildUrl(url));
+  }
+
+  getCarsByYearPaginated(startYear: number, endYear: number, pageIndex: number, pageSize: number) {
+    const url = `Car/byYear?startYear=${startYear}&endYear=${endYear}&pageIndex=${pageIndex}&pageSize=${pageSize}`;
     return this.http.get<Car[]>(ServiceUrlBuilder.buildUrl(url));
   }
 

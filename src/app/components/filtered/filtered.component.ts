@@ -13,6 +13,7 @@ export class FilteredComponent {
   public cityName: string = '';
   public yearRange: string = '';
   public cities: string[] = [];
+  public capacity: number = 0;
   constructor(public getCar: GetCarService){
     this.getCar.getCities()
     .subscribe(cities => {
@@ -22,7 +23,7 @@ export class FilteredComponent {
     });
 
     
-    this.getCar.getCarsByYear(2015, 2020)
+    this.getCar.getCarsByYear(1995, 2020)
   .subscribe(cars => {
       this.cars = cars;
   }, error => {
@@ -32,13 +33,13 @@ export class FilteredComponent {
   }
 
   getCarsByYearAndCity() {
-    if (!this.cityName && !this.yearRange) {
+    if (!this.cityName && !this.yearRange && !this.capacity) {
       this.getCar.GetCars()
         .subscribe(cars => this.cars = cars, error => console.error(error));
-    } else if (this.cityName && !this.yearRange) {
-      this.getCar.getCarsByCity(this.cityName)
+    } else if (this.cityName && !this.yearRange && !this.capacity) {
+      this.getCar.getCarsByCity(this.cityName )
         .subscribe(cars => this.cars = cars, error => console.error(error));
-    } else if (!this.cityName && this.yearRange) {
+    } else if (!this.cityName && this.yearRange ) {
       let startYear = 0;
       let endYear = 0;
       if (this.yearRange) {
@@ -56,6 +57,7 @@ export class FilteredComponent {
         .subscribe(cars => this.cars = cars, error => console.error(error));
     }
   }
+  
 
 
 
