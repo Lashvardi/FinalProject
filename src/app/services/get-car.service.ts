@@ -10,15 +10,27 @@ export class GetCarService {
 
   private static RESOURCE_URI: string = "Car";
   private static Popular_URi: string = "Car/popular";
+  private static Favorite_URI: string = "Users";
+
   constructor(private http: HttpClient) { }
 
   public GetCars() {
     return this.http.get<Car[]>(ServiceUrlBuilder.buildUrl(GetCarService.RESOURCE_URI));
   }
 
-  getPopularCars() {
+  public GetCarById(id: number) {
+    return this.http.get<Car>(ServiceUrlBuilder.buildUrl(`${GetCarService.RESOURCE_URI}/${id}`));
+  }
+
+  public getPopularCars() {
     return this.http.get<Car[]>(ServiceUrlBuilder.buildUrl(GetCarService.Popular_URi));
   }
+
+  public GetFavoriteCars() {
+    const phoneNumber = localStorage.getItem('PhoneNumber') || '';
+    return this.http.get<Car[]>(ServiceUrlBuilder.buildUrl(`${GetCarService.Favorite_URI}/${phoneNumber}/favorite-cars`));
+  }
+  
 
   public GetCarsPaginated(pageNumber: number, pageSize: number) {
     const params = new HttpParams()

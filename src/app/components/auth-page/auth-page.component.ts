@@ -12,7 +12,7 @@ export class AuthPageComponent {
   user: User = {
     phoneNumber: '',
     password: '',
-    FirstName: '',
+    firstName: '',
     lastName: ''
   };
 

@@ -12,7 +12,7 @@ export class BusinnesAuthComponent {
   user: User = {
     phoneNumber: '',
     password: '',
-    FirstName: '',
+    firstName: '',
     lastName: ''
   };
 

@@ -8,8 +8,8 @@ import { LandingComponent } from './components/landing/landing.component';
 import { LandingLeftComponent } from './components/landing-left/landing-left.component';
 import { LandingRightComponent } from './components/landing-right/landing-right.component';
 import { CarsCardComponent } from './components/cars-card/cars-card.component';
-import {SwiperModule} from 'swiper/angular';
-import {HttpClientModule } from '@angular/common/http';
+import { SwiperModule } from 'swiper/angular';
+import { HttpClientModule } from '@angular/common/http';
 import { AddCarPageComponent } from './components/add-car-page/add-car-page.component';
 import { FormsModule } from '@angular/forms';
 import { CarListComponent } from './components/car-list/car-list.component';
@@ -23,6 +23,9 @@ import { PopularCarsComponent } from './components/popular-cars/popular-cars.com
 import { FooterComponent } from './components/footer/footer.component';
 import { ChooseRegisterTypeComponent } from './components/choose-register-type/choose-register-type.component';
 import { BusinnesAuthComponent } from './components/businnes-auth/businnes-auth.component';
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
+import { FavoriteCarsComponent } from './components/favorite-cars/favorite-cars.component';
+import { CarRentDetailComponent } from './components/car-rent-detail/car-rent-detail.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +46,9 @@ import { BusinnesAuthComponent } from './components/businnes-auth/businnes-auth.
     FooterComponent,
     ChooseRegisterTypeComponent,
     BusinnesAuthComponent,
+    UserProfileComponent,
+    FavoriteCarsComponent,
+    CarRentDetailComponent,
   ],
   imports: [
     BrowserModule,
@@ -54,6 +60,6 @@ import { BusinnesAuthComponent } from './components/businnes-auth/businnes-auth.
     BsDatepickerModule.forRoot(),
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

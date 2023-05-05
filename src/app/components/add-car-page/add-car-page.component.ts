@@ -11,7 +11,7 @@ export class AddCarPageComponent {
   user: User = {
     phoneNumber: '',
     password: '',
-    FirstName: '',
+    firstName: '',
     lastName: ''
   };
 

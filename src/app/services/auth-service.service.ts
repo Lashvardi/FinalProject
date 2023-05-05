@@ -20,6 +20,7 @@ export class AuthServiceService {
     return this.http.post<any>(`${this.apiUrl}/login`, user).pipe(
       tap((response) => {
         localStorage.setItem('jwtToken', response.token);
+        localStorage.setItem("PhoneNumber", response.phoneNumber)
         console.log('====================================');
         console.log(response);
         console.log('====================================');
@@ -27,7 +28,9 @@ export class AuthServiceService {
     );
   }
 
-
+  getUser(phoneNumber: string): Observable<User> {
+    return this.http.get<User>(`${this.apiUrl}/${phoneNumber}`);
+  }
   isLoggedIn(): boolean {
     const token = localStorage.getItem('jwtToken');
     return token !== null;
@@ -35,6 +38,7 @@ export class AuthServiceService {
 
   logout(): void {
     localStorage.removeItem('jwtToken');
+    localStorage.removeItem('PhoneNumber');
     location.reload();
   }
 }

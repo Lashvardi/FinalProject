@@ -8,6 +8,8 @@ import { LoginComponent } from './components/login/login.component';
 import { FilteredComponent } from './components/filtered/filtered.component';
 import { ChooseRegisterTypeComponent } from './components/choose-register-type/choose-register-type.component';
 import { BusinnesAuthComponent } from './components/businnes-auth/businnes-auth.component';
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
+import { CarRentDetailComponent } from './components/car-rent-detail/car-rent-detail.component';
 
 const routes: Routes = [
   {
@@ -29,6 +31,14 @@ const routes: Routes = [
   {
     path: 'AuthorizationBusiness',
     component: BusinnesAuthComponent,
+  },
+  {
+    path: 'cars/:id',
+    component: CarRentDetailComponent,
+  },
+  {
+    path: 'Profile',
+    component: UserProfileComponent,
   },
   {
     path: 'Registered',

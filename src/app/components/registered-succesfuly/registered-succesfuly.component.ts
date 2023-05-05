@@ -11,7 +11,7 @@ export class RegisteredSuccesfulyComponent {
 
   ngOnInit() {
     setTimeout(() => {
-      this.router.navigate(['/']);
+      this.router.navigate(['/Login']);
     }, 5000);
   }
 }

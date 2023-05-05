@@ -1,0 +1,36 @@
+.profile_section{
+    width: 100%;
+    outline: red 1px dotted;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex-direction: row-reverse;
+    .users_info_side{
+        h1{
+            font-family: 'Noto Sans Georgian', sans-serif !important;
+            color: #1b202c;
+        }
+    }
+
+    .image_itself{
+        width: 125px;
+        height: 125px;
+        background-color: #FF4423;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        text-align: center;
+        margin-right: 120px;
+        margin-left: 30px;
+        h1{
+            font-size: 50px;
+            color: #fff;
+            font-family: 'Noto Sans Georgian', sans-serif !important;
+            font-weight: 700;
+            margin-top: 0;
+            text-align: center;
+
+        }
+    }
+}

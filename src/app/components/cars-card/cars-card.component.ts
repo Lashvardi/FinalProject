@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, Input, ViewChild, ViewEncapsulation } from '@angular/core';
+import { Route, Router } from '@angular/router';
 import { Car } from 'src/app/models/car';
 import { GetCarService } from 'src/app/services/get-car.service';
 import SwiperCore, { Navigation, Pagination, Scrollbar, A11y, SwiperOptions, Virtual } from 'swiper';
@@ -15,11 +16,11 @@ SwiperCore.use([Pagination, Navigation, Scrollbar, A11y, Virtual]);
 })
 export class CarsCardComponent {
   @Input() car: Car | undefined;
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, public router: Router) {}
 
   addToFavorites(carId: number) {
-    const userId = '1609';
-    const url = `https://localhost:7149/api/Users/${userId}/favorites/${carId}`;
+    const PhoneNumber = localStorage.getItem('PhoneNumber') || '';
+    const url = `https://localhost:7149/api/Users/${PhoneNumber}/favorites/${carId}`;
 
     this.http.post(url, {}).subscribe(() => {
       // Handle success
@@ -28,6 +29,10 @@ export class CarsCardComponent {
       // Handle error
       console.error(error);
     });
+  }
+
+  onCarClick(carId: number) {
+    this.router.navigate(['/cars', carId]);
   }
 
 }

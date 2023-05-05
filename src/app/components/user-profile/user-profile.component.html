@@ -1,0 +1,15 @@
+<div class="profile_section">
+
+    <div class="users_info_side">
+        <h1>{{user?.firstName}}</h1>
+        <h1>{{user?.lastName}}</h1>
+    </div>
+    <div class="image_template">
+        <div class="image_itself">
+            <h1>{{ user?.firstName?.slice(0,1)?.toUpperCase()}}.</h1>
+            <h1>{{ user?.lastName?.slice(0,1)?.toUpperCase() }}</h1>
+        </div>
+    </div>
+</div>
+
+<app-favorite-cars></app-favorite-cars>

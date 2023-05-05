@@ -12,7 +12,7 @@ export class LoginComponent {
   user: User = {
     phoneNumber: '',
     password: '',
-    FirstName: '',
+    firstName: '',
     lastName: ''
   };
 

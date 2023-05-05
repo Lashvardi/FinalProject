@@ -4,15 +4,15 @@
   </div>
 
 
-  <div class="right_side">
-    <div class="nav_item hoverable">
+  <div  class="right_side">
+    <div *ngIf="AuthService.isLoggedIn()"class="nav_item hoverable">
       <a routerLink="/favorites"><img src="../../../assets/favorite-icon.svg" alt=""></a>
     </div>
-    <div class="nav_item">
+    <div *ngIf="AuthService.isLoggedIn()" class="nav_item">
       <img class="hoverable" onclick="" src="../../../assets/notification-icon.svg" alt="">
     </div>
-    <div class="nav_item hoverable">
-      <a routerLink="/settings"><img src="../../../assets/settings-icon.svg" alt=""></a>
+    <div *ngIf="AuthService.isLoggedIn()" class="nav_item hoverable">
+      <a [routerLink]="'/Profile'"><img src="../../../assets/settings-icon.svg" alt=""></a>
     </div>
     <div class="nav_item">
       <button [routerLink]="'/Authorization'" *ngIf="!AuthService.isLoggedIn()" class="Login_button">ავტორიზაცია</button>
