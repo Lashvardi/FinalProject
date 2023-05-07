@@ -1,0 +1,68 @@
+<div class="container">
+  <form (submit)="onSubmit()" class="needs-validation" novalidate>
+    <div class="form-floating mb-3">
+      <app-custom-dropdown [ngModelOptions]="{standalone: true}" [options]="carBrands" placeholder="მარკა" (valueChange)="onCarBrandChange($event)"
+        [(ngModel)]="car.brand"></app-custom-dropdown>
+    </div>
+    <div class="form-floating mb-3">
+      <app-custom-dropdown [ngModelOptions]="{standalone: true}" [options]="getCarModelOptions()" placeholder="მოდელი"
+        (valueChange)="onCarModelChange($event)" [(ngModel)]="car.model"></app-custom-dropdown>
+    </div>
+    <div class="form-floating mb-3">
+      <input type="number" class="form-control" id="year" placeholder="წელი" name="year" [(ngModel)]="car.year" />
+      <label for="year">წელი</label>
+    </div>
+    <div class="form-floating mb-3">
+      <input type="text" class="form-control" id="imageUrl1" placeholder="URL" name="imageUrl1"
+        [(ngModel)]="car.imageUrl1" />
+      <label for="imageUrl1">სურათი 1 (URL)</label>
+    </div>
+    <div class="form-floating mb-3">
+      <input type="text" class="form-control" id="imageUrl2" placeholder="URL" name="imageUrl2"
+        [(ngModel)]="car.imageUrl2" />
+      <label for="imageUrl2">სურათი 2 (URL)</label>
+    </div>
+    <div class="form-floating mb-3">
+      <input type="text" class="form-control" id="imageUrl3" placeholder="URL" name="imageUrl3"
+        [(ngModel)]="car.imageUrl3" />
+      <label for="imageUrl3">სურათი 3 (URL)</label>
+    </div>
+    <div class="form-floating mb-3">
+      <input type="number" class="form-control" id="price" placeholder="ფასი" name="price" [(ngModel)]="car.price" />
+      <label for="price">ფასი</label>
+    </div>
+    <div class="form-floating mb-3">
+      <input type="number" class="form-control" id="capacity" placeholder="ტევადობა" name="capacity"
+        [(ngModel)]="car.capacity" />
+      <label for="capacity">ტევადობა</label>
+    </div>
+    <div class="form-floating mb-3">
+      <select class="form-select" id="transmission" name="transmission" [(ngModel)]="car.transmission">
+        <option value="" selected>აირჩიეთ ტრანსმისია</option>
+        <option value="მექანიკური">მექანიკური</option>
+        <option value="ავტომატიკა">ავტომატიკა</option>
+        <option value="ტიპტრონიკი">ტიპტრონიკი</option>
+      </select>
+    </div>
+    <div class="form-floating mb-3">
+      <input type="number" class="form-control" id="fuelCapacity" placeholder="ბაკის ტევადობა" name="capacity"
+        [(ngModel)]="car.fuelCapacity" />
+      <label for="fuelCapacity">ბაკის ტევადობა</label>
+    </div>
+    <div class="form-floating mb-3">
+      <input type="text" class="form-control" id="city" placeholder="ქალაქი" name="city" [(ngModel)]="car.city" />
+      <label for="city">ქალაქი</label>
+    </div>
+    <div class="form-floating mb-3">
+      <input type="number" class="form-control" id="latitude" placeholder="ლოკაცია" name="latitude"
+        [(ngModel)]="car.longitude" />
+      <label for="latitude">ლოკაცია</label>
+    </div>
+    <div class="form-floating mb-3">
+      <input type="number" class="form-control" id="longtitude" placeholder="ლოკაცია" name="longtitude"
+        [(ngModel)]="car.longitude" />
+      <label for="longtitude">ლოკაცია</label>
+    </div>
+    <button class="btn btn-primary" type="submit">შენახვა</button>
+
+  </form>

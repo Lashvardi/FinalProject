@@ -1,0 +1,6 @@
+<div class="form-floating">
+  <select class="form-select" [(ngModel)]="selectedValue" (change)="onValueChange()">
+    <option *ngFor="let option of options" [value]="option.value">{{ option.label }}</option>
+  </select>
+  <label for="floatingSelect">{{ placeholder }}</label>
+</div>

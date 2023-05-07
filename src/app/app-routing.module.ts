@@ -10,6 +10,7 @@ import { ChooseRegisterTypeComponent } from './components/choose-register-type/c
 import { BusinnesAuthComponent } from './components/businnes-auth/businnes-auth.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { CarRentDetailComponent } from './components/car-rent-detail/car-rent-detail.component';
+import { AddCarComponent } from './components/add-car/add-car.component';
 
 const routes: Routes = [
   {
@@ -19,6 +20,10 @@ const routes: Routes = [
   {
     path: 'addUser',
     component: AddCarPageComponent,
+  },
+  {
+    path: 'CarAdd',
+    component: AddCarComponent,
   },
   {
     path: 'Authorization',

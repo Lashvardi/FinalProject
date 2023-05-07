@@ -26,6 +26,8 @@ import { BusinnesAuthComponent } from './components/businnes-auth/businnes-auth.
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { FavoriteCarsComponent } from './components/favorite-cars/favorite-cars.component';
 import { CarRentDetailComponent } from './components/car-rent-detail/car-rent-detail.component';
+import { AddCarComponent } from './components/add-car/add-car.component';
+import { CustomDropdownComponent } from './components/custom-dropdown/custom-dropdown.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +51,8 @@ import { CarRentDetailComponent } from './components/car-rent-detail/car-rent-de
     UserProfileComponent,
     FavoriteCarsComponent,
     CarRentDetailComponent,
+    AddCarComponent,
+    CustomDropdownComponent,
   ],
   imports: [
     BrowserModule,
@@ -58,6 +62,7 @@ import { CarRentDetailComponent } from './components/car-rent-detail/car-rent-de
     FormsModule,
     BrowserAnimationsModule,
     BsDatepickerModule.forRoot(),
+    
   ],
   providers: [],
   bootstrap: [AppComponent],

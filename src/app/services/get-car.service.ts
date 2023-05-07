@@ -31,6 +31,11 @@ export class GetCarService {
     );
   }
 
+  public addCar(car: Car): Observable<Car> {
+    const url = ServiceUrlBuilder.buildUrl(GetCarService.RESOURCE_URI);
+    return this.http.post<Car>(url, car);
+  }
+
   public GetFavoriteCars() {
     const phoneNumber = localStorage.getItem('PhoneNumber') || '';
     return this.http.get<Car[]>(

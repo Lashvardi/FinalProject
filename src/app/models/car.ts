@@ -6,8 +6,12 @@ export interface Car {
   imageUrl1:    string;
   imageUrl2:    string;
   imageUrl3:    string;
+  price:        number;
   capacity:     number;
   transmission: string;
+  createdBy:    string;
   fuelCapacity: number;
-  price:        number;
+  city:         string;
+  latitude:     number;
+  longitude:    number;
 }
