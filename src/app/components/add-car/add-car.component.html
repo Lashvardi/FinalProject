@@ -1,11 +1,11 @@
 <div class="container">
   <form (submit)="onSubmit()" class="needs-validation" novalidate>
     <div class="form-floating mb-3">
-      <app-custom-dropdown [ngModelOptions]="{standalone: true}" [options]="carBrands" placeholder="მარკა" (valueChange)="onCarBrandChange($event)"
+      <app-custom-dropdown [options]="carBrands" placeholder="მარკა" (valueChange)="onCarBrandChange($event)"
         [(ngModel)]="car.brand"></app-custom-dropdown>
     </div>
     <div class="form-floating mb-3">
-      <app-custom-dropdown [ngModelOptions]="{standalone: true}" [options]="getCarModelOptions()" placeholder="მოდელი"
+      <app-custom-dropdown [options]="getCarModelOptions()" placeholder="მოდელი"
         (valueChange)="onCarModelChange($event)" [(ngModel)]="car.model"></app-custom-dropdown>
     </div>
     <div class="form-floating mb-3">
@@ -45,7 +45,7 @@
       </select>
     </div>
     <div class="form-floating mb-3">
-      <input type="number" class="form-control" id="fuelCapacity" placeholder="ბაკის ტევადობა" name="capacity"
+      <input type="number" class="form-control" id="fuelCapacity" placeholder="ბაკის ტევადობა" name="fuelCapacity"
         [(ngModel)]="car.fuelCapacity" />
       <label for="fuelCapacity">ბაკის ტევადობა</label>
     </div>
@@ -53,16 +53,5 @@
       <input type="text" class="form-control" id="city" placeholder="ქალაქი" name="city" [(ngModel)]="car.city" />
       <label for="city">ქალაქი</label>
     </div>
-    <div class="form-floating mb-3">
-      <input type="number" class="form-control" id="latitude" placeholder="ლოკაცია" name="latitude"
-        [(ngModel)]="car.longitude" />
-      <label for="latitude">ლოკაცია</label>
-    </div>
-    <div class="form-floating mb-3">
-      <input type="number" class="form-control" id="longtitude" placeholder="ლოკაცია" name="longtitude"
-        [(ngModel)]="car.longitude" />
-      <label for="longtitude">ლოკაცია</label>
-    </div>
     <button class="btn btn-primary" type="submit">შენახვა</button>
-
   </form>

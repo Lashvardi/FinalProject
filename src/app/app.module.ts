@@ -28,6 +28,8 @@ import { FavoriteCarsComponent } from './components/favorite-cars/favorite-cars.
 import { CarRentDetailComponent } from './components/car-rent-detail/car-rent-detail.component';
 import { AddCarComponent } from './components/add-car/add-car.component';
 import { CustomDropdownComponent } from './components/custom-dropdown/custom-dropdown.component';
+import { NgxMapboxGLModule } from 'ngx-mapbox-gl';
+import { MapComponent } from './components/map/map.component';
 
 @NgModule({
   declarations: [
@@ -53,6 +55,7 @@ import { CustomDropdownComponent } from './components/custom-dropdown/custom-dro
     CarRentDetailComponent,
     AddCarComponent,
     CustomDropdownComponent,
+    MapComponent,
   ],
   imports: [
     BrowserModule,
@@ -62,7 +65,10 @@ import { CustomDropdownComponent } from './components/custom-dropdown/custom-dro
     FormsModule,
     BrowserAnimationsModule,
     BsDatepickerModule.forRoot(),
-    
+    NgxMapboxGLModule.withConfig({
+      accessToken: 'pk.eyJ1IjoibGFzaHZhcmRpIiwiYSI6ImNsZmd6MnlmNjBvYzQzcW5wdnVxY2IyMnQifQ.GMGF_9WLQhrpSfGnJ-W_LQ',
+    })
+
   ],
   providers: [],
   bootstrap: [AppComponent],

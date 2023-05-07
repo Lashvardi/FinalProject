@@ -13,17 +13,17 @@ export class AddCarComponent {
     id: 0,
     brand: '',
     model: '',
-    year: 0,
+    year: 2022,
     imageUrl1: '',
     imageUrl2: '',
     imageUrl3: '',
-    price: 0,
-    capacity: 0,
+    price: 70,
+    capacity: 4,
     transmission: '',
     createdBy: localStorage.getItem("PhoneNumber") || '',
-    fuelCapacity: 0,
+    fuelCapacity: 70,
     city: '',
-    latitude: 0,
+    latitude: 0 ,
     longitude: 0,
   };
 
@@ -93,12 +93,12 @@ export class AddCarComponent {
   onCarBrandChange(value: string): void {
     this.selectedCarBrand = value;
     this.selectedCarModel = '';
-    this.form.controls['carBrand'].setValue(value);
+    this.car.brand = value;
   }
 
   onCarModelChange(value: string): void {
     this.selectedCarModel = value;
-    this.form.controls['carModel'].setValue(value);
+    this.car.model = value;
   }
   form = new FormGroup({
     carBrand: new FormControl('',),
@@ -111,7 +111,14 @@ export class AddCarComponent {
   onSubmit(): void {
     this.getCarService.addCar(this.car).subscribe((newCar: Car) => {
       console.log(`Added new car: ${JSON.stringify(newCar)}`);
-      // reset form fields
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition((position) => {
+          this.car.latitude = position.coords.latitude;
+          this.car.longitude = position.coords.longitude;
+        });
+      } else {
+        console.log("Geolocation is not supported by this browser.");
+      }
       this.car = {
         id: 0,
         brand: '',
