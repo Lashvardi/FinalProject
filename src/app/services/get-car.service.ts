@@ -32,11 +32,7 @@ export class GetCarService {
   }
 
   getCarsByCapacity(capacity: number): Observable<Car[]> {
-    return this.http.get<Car[]>(
-      ServiceUrlBuilder.buildUrl(
-        `${GetCarService.RESOURCE_URI}/byCapacity?capacity=${capacity}`
-      )
-    );
+    return this.http.get<Car[]>(ServiceUrlBuilder.buildUrl(`${GetCarService.RESOURCE_URI}/byCapacity?capacity=${capacity}`));
   }
   public addCar(car: Car): Observable<Car> {
     const url = ServiceUrlBuilder.buildUrl(GetCarService.RESOURCE_URI);

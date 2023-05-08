@@ -10,7 +10,6 @@ import { GetCarService } from 'src/app/services/get-car.service';
 export class FilteredComponent {
   cars: Car[] = [];
   public cityName: string = '';
-  capacities = [1, 2, 3, 4, 5, 6, 7, 8];
   public yearRange: string = '';
   public cities: string[] = [];
   public selectedCapacity: number = 0;
@@ -20,18 +19,12 @@ export class FilteredComponent {
     this.getCar.getCities().subscribe(
       (cities) => {
         this.cities = cities;
-      },
-      (error) => {
-        console.error(error);
       }
     );
 
     this.getCar.getCarsByYear(1995, 2020).subscribe(
       (cars) => {
         this.cars = cars;
-      },
-      (error) => {
-        console.error(error);
       }
     );
   }
@@ -42,29 +35,28 @@ export class FilteredComponent {
   getCarsByCapacity() {
     if (!this.capacity) {
       this.getCar.GetCars().subscribe(
-        (cars) => (this.cars = cars),
-        (error) => console.error(error)
+        (cars) => (this.cars = cars)
       );
     } else {
       this.getCar.getCarsByCapacity(this.capacity).subscribe(
-        (cars) => (this.cars = cars),
-        (error) => console.error(error)
+        (cars) => (this.cars = cars)
       );
     }
   }
 
-  getCarsByYearAndCity() {
+   getCarsByYearAndCity() {
+    // No filter
     if (!this.cityName && !this.yearRange) {
-      this.getCar.GetCars().subscribe(
-        (cars) => (this.cars = cars),
-        (error) => console.error(error)
-      );
-    } else if (this.cityName && !this.yearRange) {
+      this.getCar.GetCars().subscribe((cars) => (this.cars = cars));
+    }
+    // City filter only
+    else if (this.cityName && !this.yearRange) {
       this.getCar.getCarsByCity(this.cityName).subscribe(
-        (cars) => (this.cars = cars),
-        (error) => console.error(error)
+        (cars) => (this.cars = cars)
       );
-    } else if (!this.cityName && this.yearRange) {
+    }
+    // Year filter only
+    else if (!this.cityName && this.yearRange) {
       let startYear = 0;
       let endYear = 0;
       if (this.yearRange) {
@@ -73,10 +65,11 @@ export class FilteredComponent {
           .map((y) => parseInt(y));
       }
       this.getCar.getCarsByYear(startYear, endYear).subscribe(
-        (cars) => (this.cars = cars),
-        (error) => console.error(error)
+        (cars) => (this.cars = cars)
       );
-    } else {
+    }
+    // City and Year filters
+    else {
       let startYear = 0;
       let endYear = 0;
       if (this.yearRange) {
@@ -86,10 +79,7 @@ export class FilteredComponent {
       }
       this.getCar
         .getCarsByCityAndYear(this.cityName, startYear, endYear)
-        .subscribe(
-          (cars) => (this.cars = cars),
-          (error) => console.error(error)
-        );
+        .subscribe((cars) => (this.cars = cars));
     }
   }
 }

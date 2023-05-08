@@ -143,7 +143,7 @@
         [(ngModel)]="capacity"
         (change)="getCarsByCapacity()"
       />
-      <label for="capacityInputAll" class="form-check-label">All</label>
+      <label for="capacityInputAll" class="form-check-label">ყველა</label>
     </div>
   </div>
   <button class="btn btn-primary" (click)="getCarsByYearAndCity()">გაფილტვრა</button>
@@ -153,5 +153,7 @@
 <div *ngIf="cars" class="container-fluid">
   <app-cars-card *ngFor="let car of cars" [car]="car"></app-cars-card>
 </div>
+
+
 </div>
 
