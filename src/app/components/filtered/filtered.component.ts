@@ -14,6 +14,8 @@ export class FilteredComponent {
   public yearRange: string = '';
   public cities: string[] = [];
   public selectedCapacity: number = 0;
+  capacity: number = 0;
+
   constructor(public getCar: GetCarService) {
     this.getCar.getCities().subscribe(
       (cities) => {
@@ -32,6 +34,23 @@ export class FilteredComponent {
         console.error(error);
       }
     );
+  }
+  ngOnInit() {
+    this.getCarsByCapacity();
+  }
+  
+  getCarsByCapacity() {
+    if (!this.capacity) {
+      this.getCar.GetCars().subscribe(
+        (cars) => (this.cars = cars),
+        (error) => console.error(error)
+      );
+    } else {
+      this.getCar.getCarsByCapacity(this.capacity).subscribe(
+        (cars) => (this.cars = cars),
+        (error) => console.error(error)
+      );
+    }
   }
 
   getCarsByYearAndCity() {
