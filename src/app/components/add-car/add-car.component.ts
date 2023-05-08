@@ -23,8 +23,9 @@ export class AddCarComponent {
     createdBy: localStorage.getItem("PhoneNumber") || '',
     fuelCapacity: 70,
     city: '',
-    latitude: 0 ,
+    latitude: 0,
     longitude: 0,
+    Multiplier: 1
   };
 
 
@@ -135,6 +136,7 @@ export class AddCarComponent {
         city: '',
         latitude: 0,
         longitude: 0,
+        Multiplier: 1
       };
     });
   }

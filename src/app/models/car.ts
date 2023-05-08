@@ -14,4 +14,5 @@ export interface Car {
   city:         string;
   latitude:     number;
   longitude:    number;
+  Multiplier: number;
 }

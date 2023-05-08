@@ -1,29 +1,76 @@
-.type_container{
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    outline: dotted red 1px;
 
-    .inner_container{
-        width: 40%;
-        outline: blue 5px dotted;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-wrap: wrap;
-        height: 70 vh;
+@import "../../../../node_modules/bootstrap/scss/bootstrap";
 
-        .left_side{
-            height: 200px;
-            width: 50%;
-            background-color: red;
-        }
 
-        .right_side{
-            height: 200px;
-            width: 50%;
-            background-color: blue;
-        }
-    }
+
+*{
+  font-family: 'Noto Sans Georgian', sans-serif !important;
+}
+
+
+
+.left_side{
+  height: 200px;
+  width: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: #658DF1;
+  color: #fff;
+  h1{
+    font-size: 25px;
+  }
+}
+
+.right_side{
+  height: 200px;
+  width: 500px;
+  background-color: #131825;
+  color: #AEC8FC;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  h1{
+    font-size: 25px;
+  }
+}
+
+
+.flex_box{
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+.Title{
+  margin-top: 40px;
+  margin-bottom: 40px;
+  font-weight: 900;
+  font-size: 40px;
+  background: -webkit-linear-gradient(#658DF1, #354263);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.flex_box2{
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 100%;
+  flex-wrap: wrap;
+  flex-direction: column;
+
+  button{
+    width: 250px;
+    height: 50px;
+    background-color: #354263;
+    font-weight: 700;
+    color: #fff;
+    border-radius: 14px;
+  }
 }

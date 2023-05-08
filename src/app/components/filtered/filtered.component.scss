@@ -1,5 +1,9 @@
 @import "../../../../node_modules/bootstrap/scss/bootstrap";
 
+*{
+  font-family: 'Noto Sans Georgian', sans-serif !important;
+}
+
 
 .container-fluid{
     width: 100%;
@@ -15,5 +19,4 @@
 
   .filter_container{
     width: 300px;
-    background-color: #cfcfcf;
   }
