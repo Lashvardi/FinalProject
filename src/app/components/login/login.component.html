@@ -1,38 +1,38 @@
 <div class="container">
-    <div class="row">
-        <div class="col">
-            <form (submit)="onSubmit()" class="needs-validation" novalidate>
-                <div class="col-sm">
-                    <div class="form-floating mb-3">
-                        <input
-                          type="text"
-                          class="form-control"
-                          id="floatingInput"
-                          placeholder="599288288"
-                          name="phoneNumber"
-                          [(ngModel)]="user.phoneNumber"
-                        />
-                        <label for="floatingInput">ტელეფონის ნომერი</label>
-                      </div>
-                </div>
-                <div class="col-sm">
-                    <div class="form-floating">
-                        <input
-                          type="password"
-                          name="password"
-                          [(ngModel)]="user.password"
-                          class="form-control"
-                          id="floatingPassword"
-                          placeholder="Password"
-                        />
-                        <label for="floatingPassword">პაროლი</label>
-                      </div>
-                </div>
-                <button type="submit" class="btn btn-primary mt-3 mb-3 Loginbutton">
-                  შესვლა
-                  <img src="../../../assets/arrow-register-right-icon.svg" alt="" />
-                </button>
-              </form>
+  <div class="row">
+    <div class="col">
+      <form (submit)="onSubmit()" class="needs-validation" novalidate>
+        <div class="col-sm">
+          <div class="form-floating mb-3">
+            <input
+              type="text"
+              class="form-control"
+              id="floatingInput"
+              placeholder="599288288"
+              name="phoneNumber"
+              [(ngModel)]="user.phoneNumber"
+            />
+            <label for="floatingInput">ტელეფონის ნომერი</label>
+          </div>
         </div>
+        <div class="col-sm">
+          <div class="form-floating">
+            <input
+              type="password"
+              name="password"
+              [(ngModel)]="user.password"
+              class="form-control"
+              id="floatingPassword"
+              placeholder="Password"
+            />
+            <label for="floatingPassword">პაროლი</label>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary mt-3 mb-3 Loginbutton">
+          შესვლა
+          <img src="../../../assets/arrow-register-right-icon.svg" alt="" />
+        </button>
+      </form>
     </div>
+  </div>
 </div>

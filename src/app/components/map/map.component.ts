@@ -44,7 +44,8 @@ export class MapComponent {
   }
 
   infoBoxImageSrc: string | null = null;
-  infoBoxHeader: string | null = null;
+  infoBoxModel: string | null = null;
+  infoBoxMark: string | null = null;
   infoBoxDistance: string | null = null;
   mapLoading: boolean = true;
 
@@ -184,9 +185,10 @@ export class MapComponent {
       const distanceInMeters = this.userLocation.distanceTo(markerCoords);
       const distanceInKilometers = distanceInMeters / 1000;
       console.log(`დისტანცია: ${distanceInKilometers.toFixed(2)} კილომეტრი`);
-      const randomCacheBuster = Math.floor(Math.random() * 100000);
-      this.infoBoxImageSrc = `https://source.unsplash.com/random/200x100?Taxi&${randomCacheBuster}`;
-      this.infoBoxHeader = await this.fetchLocationInfo(marker.latitude, marker.longitude);
+
+      this.infoBoxImageSrc = this.car?.imageUrl1 || null;
+      this.infoBoxModel =  this.car?.model || null;
+      this.infoBoxMark =  this.car?.brand || null;
       this.infoBoxDistance = `დისტანცია: ${distanceInKilometers.toFixed(
         2
       )} კილომეტრი`;
@@ -286,8 +288,13 @@ export class MapComponent {
       const distanceInKilometers = distanceInMeters / 1000;
       console.log(`დისტანცია: ${distanceInKilometers.toFixed(2)} კილომეტრი`);
 
+
       this.infoBoxImageSrc = this.car?.imageUrl1 || `აქ მანქანის სახელი უნდა იყოს`;
-      this.infoBoxHeader = this.car?.brand || "აქ მანქანის ბრენდი";
+      this.infoBoxModel = this.car?.brand || "აქ მანქანის ბრენდი";
+      this.infoBoxImageSrc = this.car?.imageUrl1 || null;
+      this.infoBoxModel =  this.car?.model || null;
+      this.infoBoxMark =  this.car?.brand || null;
+
       this.infoBoxDistance = `დისტანცია: ${distanceInKilometers.toFixed(
         2
       )} კილომეტრი`;

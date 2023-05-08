@@ -1,28 +1,159 @@
-<div class="form-group">
-  <label for="cityInput">City:</label>
-  <select id="cityInput" class="form-control" [(ngModel)]="cityName">
-    <option *ngFor="let city of cities" [value]="city">{{city}}</option>
-  </select>
-</div>
-<div class="form-group">
-  <label for="yearInput">Year range:</label>
-  <select id="yearInput" class="form-control" [(ngModel)]="yearRange">
-    <option value="1970-1975">1970-1975</option>
-    <option value="1975-1980">1975-1980</option>
-    <option value="1980-1985">1980-1985</option>
-    <option value="1985-1990">1985-1990</option>
-    <option value="1990-1995">1990-1995</option>
-    <option value="1995-2000">1995-2000</option>
-    <option value="2000-2005">2000-2005</option>
-    <option value="2005-2010">2005-2010</option>
-    <option value="2015-2020">2015-2020</option>
-    <option value="2020-2025">2020-2025</option>
-    <option value="1900-2025">All</option>
-  </select>
-</div>
-<button class="btn btn-primary" (click)="getCarsByYearAndCity()">Search</button>
+<div class="left_side">
+  <div class="filter_container">
 
+  <div class="form-group">
+    <label for="cityInput">ქალაქი</label>
+    <select id="cityInput" class="form-control" [(ngModel)]="cityName">
+      <option *ngFor="let city of cities" [value]="city">{{ city }}</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="yearInput">წლების</label>
+    <select id="yearInput" class="form-control" [(ngModel)]="yearRange">
+      <option value="1970-1975">1970-1975</option>
+      <option value="1975-1980">1975-1980</option>
+      <option value="1980-1985">1980-1985</option>
+      <option value="1985-1990">1985-1990</option>
+      <option value="1990-1995">1990-1995</option>
+      <option value="1995-2000">1995-2000</option>
+      <option value="2000-2005">2000-2005</option>
+      <option value="2005-2010">2005-2010</option>
+      <option value="2015-2020">2015-2020</option>
+      <option value="2020-2025">2020-2025</option>
+      <option value="1900-2025">All</option>
+    </select>
+  </div>
+  <div class="form-group mt-5">
+    <label>ტევადობა</label>
+    <div class="form-check">
+      <input
+        type="radio"
+        name="capacityInput"
+        id="capacityInput2"
+        class="form-check-input"
+        value="2"
+        [(ngModel)]="capacity"
+        (change)="getCarsByCapacity()"
+      />
+      <label for="capacityInput2" class="form-check-label">2</label>
+    </div>
+    <div class="form-check">
+      <input
+        type="radio"
+        name="capacityInput"
+        id="capacityInput3"
+        class="form-check-input"
+        value="3"
+        [(ngModel)]="capacity"
+        (change)="getCarsByCapacity()"
+      />
+      <label for="capacityInput3" class="form-check-label">3</label>
+    </div>
+    <div class="form-check">
+      <input
+        type="radio"
+        name="capacityInput"
+        id="capacityInput4"
+        class="form-check-input"
+        value="4"
+        [(ngModel)]="capacity"
+        (change)="getCarsByCapacity()"
+      />
+      <label for="capacityInput4" class="form-check-label">4</label>
+    </div>
+    <div class="form-check">
+      <input
+        type="radio"
+        name="capacityInput"
+        id="capacityInput5"
+        class="form-check-input"
+        value="5"
+        [(ngModel)]="capacity"
+        (change)="getCarsByCapacity()"
+      />
+      <label for="capacityInput5" class="form-check-label">5</label>
+    </div>
+    <div class="form-check">
+      <input
+        type="radio"
+        name="capacityInput"
+        id="capacityInput6"
+        class="form-check-input"
+        value="6"
+        [(ngModel)]="capacity"
+        (change)="getCarsByCapacity()"
+      />
+      <label for="capacityInput6" class="form-check-label">6</label>
+    </div>
+    <div class="form-check">
+      <input
+        type="radio"
+        name="capacityInput"
+        id="capacityInput7"
+        class="form-check-input"
+        value="7"
+        [(ngModel)]="capacity"
+        (change)="getCarsByCapacity()"
+      />
+      <label for="capacityInput7" class="form-check-label">7</label>
+    </div>
+    <div class="form-check">
+      <input
+        type="radio"
+        name="capacityInput"
+        id="capacityInput8"
+        class="form-check-input"
+        value="8"
+        [(ngModel)]="capacity"
+        (change)="getCarsByCapacity()"
+      />
+      <label for="capacityInput8" class="form-check-label">8</label>
+    </div>
+    <div class="form-check">
+      <input
+        type="radio"
+        name="capacityInput"
+        id="capacityInput9"
+        class="form-check-input"
+        value="9"
+        [(ngModel)]="capacity"
+        (change)="getCarsByCapacity()"
+      />
+      <label for="capacityInput9" class="form-check-label">9</label>
+    </div>
+    <div class="form-check">
+      <input
+        type="radio"
+        name="capacityInput"
+        id="capacityInput10"
+        class="form-check-input"
+        value="10"
+        [(ngModel)]="capacity"
+        (change)="getCarsByCapacity()"
+      />
+      <label for="capacityInput10" class="form-check-label">10</label>
+    </div>
+    <div class="form-check">
+      <input
+        type="radio"
+        name="capacityInput"
+        id="capacityInputAll"
+        class="form-check-input"
+        value=""
+        [(ngModel)]="capacity"
+        (change)="getCarsByCapacity()"
+      />
+      <label for="capacityInputAll" class="form-check-label">ყველა</label>
+    </div>
+  </div>
+  <button class="btn btn-primary" (click)="getCarsByYearAndCity()">გაფილტვრა</button>
+</div>
 
-<div *ngIf="cars" class="container">
+  
+<div *ngIf="cars" class="container-fluid">
   <app-cars-card *ngFor="let car of cars" [car]="car"></app-cars-card>
 </div>
+
+
+</div>
+

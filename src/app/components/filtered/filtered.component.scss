@@ -1,27 +1,19 @@
 @import "../../../../node_modules/bootstrap/scss/bootstrap";
 
 
-.container{
+.container-fluid{
+    width: 100%;
     display: flex;
     flex-wrap: wrap;
     gap: 25px;
-}.pagination {
+}
+  .left_side{
     display: flex;
-    justify-content: center;
-    align-items: center;
+    height: 100vh;
+    flex-direction: row;
   }
-  
-  .pagination button {
-    margin: 0 5px;
-    padding: 5px 10px;
-    border: none;
-    background-color: #f0f0f0;
-    color: #333;
-    font-weight: bold;
-    cursor: pointer;
-  }
-  
-  .pagination button.active {
-    background-color: #333;
-    color: #fff;
+
+  .filter_container{
+    width: 300px;
+    background-color: #cfcfcf;
   }

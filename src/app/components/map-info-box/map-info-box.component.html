@@ -1,0 +1,10 @@
+<div *ngIf="imageSrc && Carbrand">
+    <div class="card info-box" style="width: 18rem;">
+      <img [src]="imageSrc" class="card-img-top" alt="Bus Image" />
+      <div class="card-body">
+        <h5 class="card-title">{{ Carbrand }}</h5>
+        <h3 class="card-title">{{ CarModel }}</h3>
+        <p class="card-text">{{distance}}</p>
+      </div>
+    </div>
+  </div>

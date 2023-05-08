@@ -11,7 +11,7 @@ export class UserProfileComponent {
   user: User | undefined;
 
   constructor(private AuthService: AuthServiceService) {
-    const phoneNumber = localStorage.getItem('PhoneNumber') || ''; // replace with actual phone number
+    const phoneNumber = localStorage.getItem('PhoneNumber') || '';
     this.AuthService.getUser(phoneNumber).subscribe(
       (user) => {
         this.user = user;

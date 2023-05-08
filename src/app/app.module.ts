@@ -30,6 +30,7 @@ import { AddCarComponent } from './components/add-car/add-car.component';
 import { CustomDropdownComponent } from './components/custom-dropdown/custom-dropdown.component';
 import { NgxMapboxGLModule } from 'ngx-mapbox-gl';
 import { MapComponent } from './components/map/map.component';
+import { MapInfoBoxComponent } from './components/map-info-box/map-info-box.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +57,7 @@ import { MapComponent } from './components/map/map.component';
     AddCarComponent,
     CustomDropdownComponent,
     MapComponent,
+    MapInfoBoxComponent,
   ],
   imports: [
     BrowserModule,
