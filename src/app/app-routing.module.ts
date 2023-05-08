@@ -11,11 +11,12 @@ import { BusinnesAuthComponent } from './components/businnes-auth/businnes-auth.
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { CarRentDetailComponent } from './components/car-rent-detail/car-rent-detail.component';
 import { AddCarComponent } from './components/add-car/add-car.component';
+import { MessagesComponent } from './components/messages/messages.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: HomeComponent,
+    component: MessagesComponent,
   },
   {
     path: 'addUser',

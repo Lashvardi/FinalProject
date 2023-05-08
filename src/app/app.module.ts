@@ -31,6 +31,7 @@ import { CustomDropdownComponent } from './components/custom-dropdown/custom-dro
 import { NgxMapboxGLModule } from 'ngx-mapbox-gl';
 import { MapComponent } from './components/map/map.component';
 import { MapInfoBoxComponent } from './components/map-info-box/map-info-box.component';
+import { MessagesComponent } from './components/messages/messages.component';
 
 @NgModule({
   declarations: [
@@ -58,6 +59,7 @@ import { MapInfoBoxComponent } from './components/map-info-box/map-info-box.comp
     CustomDropdownComponent,
     MapComponent,
     MapInfoBoxComponent,
+    MessagesComponent,
   ],
   imports: [
     BrowserModule,

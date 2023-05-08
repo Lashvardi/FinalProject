@@ -5,4 +5,8 @@ export class ServiceUrlBuilder {
   public static buildUrl(url: string) {
     return this.DOMAIN_URL + this.API_POSTFIX + url;
   }
+
+  public static buildRootUrl(url: string) {
+    return this.DOMAIN_URL + url;
+  }
 }
