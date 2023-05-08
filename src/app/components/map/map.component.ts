@@ -286,9 +286,8 @@ export class MapComponent {
       const distanceInKilometers = distanceInMeters / 1000;
       console.log(`დისტანცია: ${distanceInKilometers.toFixed(2)} კილომეტრი`);
 
-      const randomCacheBuster = Math.floor(Math.random() * 100000);
-      this.infoBoxImageSrc = `https://source.unsplash.com/random/200x100?Taxi&${randomCacheBuster}`;
-      this.infoBoxHeader = await this.fetchLocationInfo(marker.latitude, marker.longitude);
+      this.infoBoxImageSrc = this.car?.imageUrl1 || `აქ მანქანის სახელი უნდა იყოს`;
+      this.infoBoxHeader = this.car?.brand || "აქ მანქანის ბრენდი";
       this.infoBoxDistance = `დისტანცია: ${distanceInKilometers.toFixed(
         2
       )} კილომეტრი`;
