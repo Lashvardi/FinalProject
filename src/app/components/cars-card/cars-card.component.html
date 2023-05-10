@@ -19,7 +19,7 @@
     <div class="swiper_body">
       <swiper *ngIf="car?.imageUrl1" [slidesPerView]="1" [spaceBetween]="10" [navigation]="true"
         [pagination]="{ clickable: true }">
-        <ng-template swiperSlide><img class="slide_Image" src="{{car?.imageUrl1}}" alt=""></ng-template>
+        <ng-template swiperSlide><img class="slide_Image" src="{{car?.imageUrl1 }}" alt=""></ng-template>
         <ng-template swiperSlide><img class="slide_Image" src="{{car?.imageUrl2}}" alt=""></ng-template>
         <ng-template swiperSlide><img class="slide_Image" src="{{car?.imageUrl3}}" alt=""></ng-template>
       </swiper>
