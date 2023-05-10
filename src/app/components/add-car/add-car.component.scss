@@ -1,1 +1,19 @@
 @import "../../../../node_modules/bootstrap/scss/bootstrap";
+
+.flex_box{
+    background-color: #fefefe;
+    width: 100%;
+    flex-direction: row-reverse;
+    display: flex;
+    margin-top: 40px;
+
+    .container{
+        width: 50%;
+    }
+
+    .right_side{
+        width: 50%;
+        background-image: url(../../../assets/Add_car_image.png);
+        background-position-y: -80px;
+    }
+}
