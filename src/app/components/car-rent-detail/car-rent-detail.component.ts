@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { forkJoin } from 'rxjs';
 import { Car } from 'src/app/models/car';
 import { GetCarService } from 'src/app/services/get-car.service';
+import { MessageService } from 'src/app/services/message.service';
 import { PurchaseCarService } from 'src/app/services/purchase-car.service';
 
 @Component({
@@ -12,11 +14,13 @@ import { PurchaseCarService } from 'src/app/services/purchase-car.service';
 export class CarRentDetailComponent {
   car: Car | undefined;
   multiplier: number = 1;
-  PhoneNumber: string = localStorage.getItem("PhoneNumber") || "";
+  PhoneNumber: string = localStorage.getItem('PhoneNumber') || '';
+  OwnerPhoneNumber: string = '';
   constructor(
     private route: ActivatedRoute,
     private carService: GetCarService,
-    private purchase: PurchaseCarService
+    private purchase: PurchaseCarService,
+    private Message: MessageService
   ) {}
 
   ngOnInit() {
@@ -27,27 +31,42 @@ export class CarRentDetailComponent {
     }
   }
 
-  BuyCar(phoneNumber: string, carId: number, multiplier: number) {
-    phoneNumber = this.PhoneNumber;
-    carId = this.car?.id || 0;
-     multiplier = this.multiplier;
-    this.purchase.purchaseCar(phoneNumber, carId, multiplier).subscribe(
-      (response) => {
-        console.log('Car purchased successfully:', response);
+  getCarDetails(carId: number) {
+    this.carService.GetCarById(carId).subscribe(
+      (response: Car) => {
+        this.car = response;
+        this.OwnerPhoneNumber = this.car?.createdBy ?? '';
       },
-      (error) => {
-        console.error('Error occurred while purchasing car:', error);
+      (error: any) => {
+        console.error('Error retrieving car details:', error);
       }
     );
   }
 
-  getCarDetails(carId: number) {
-    this.carService.GetCarById(carId).subscribe(
-      (car) => {
-        this.car = car;
-        console.log(this.car);
+  BuyCar(phoneNumber: string, carId: number, multiplier: number) {
+    phoneNumber = this.PhoneNumber;
+    carId = this.car?.id || 0;
+    multiplier = this.multiplier;
+
+    const purchaseObservable = this.purchase.purchaseCar(
+      phoneNumber,
+      carId,
+      multiplier
+    );
+
+    const sendMessageObservable = this.Message.SendMessage(
+      this.OwnerPhoneNumber,
+      carId
+    );
+
+    forkJoin([purchaseObservable, sendMessageObservable]).subscribe(
+      ([purchaseResponse, sendMessageResponse]) => {
+        console.log('Car purchased successfully:', purchaseResponse);
+        console.log('Message sent successfully:', sendMessageResponse);
       },
-      (error) => console.error(error)
+      (error) => {
+        console.error('Error occurred:', error);
+      }
     );
   }
 }
