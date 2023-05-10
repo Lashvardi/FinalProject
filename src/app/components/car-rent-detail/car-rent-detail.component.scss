@@ -1,13 +1,12 @@
-
-
 mgl-map {
   height: 100%;
   width: 100%;
 }
 
-.zindex{
+.zindex {
   z-index: 125125;
-}.marker {
+}
+.marker {
   cursor: pointer;
   width: 30px;
   height: 30px;
@@ -20,60 +19,172 @@ mgl-map {
   box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.1);
 }
 
-.image{
-width: 30px;
-height: 30px;
+.image {
+  width: 30px;
+  height: 30px;
 }
 
-
-.rent_detail_box{
+.rent_detail_box {
   width: 100%;
   height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
 
-  .content_box{
-    width: 70%;
-    height: 800px;
+  .content_box {
+    width: 100%;
     display: flex;
     flex-direction: row;
 
-    .left_Image_side{
+    .left_Image_side {
       width: 100%;
       height: 100%;
 
-      .image_box{
+      .image_box {
         height: 100%;
         display: flex;
         align-items: center;
         justify-content: flex-start;
         flex-direction: column;
-        .small_images{
+        .small_images {
           width: 100%;
-          height: 200px;
           display: flex;
           align-items: center;
           justify-content: center;
+          gap: 5px;
 
-          .small_image{
-            width: 250px;
-            border-radius: 12px;
+          .small_image {
+            padding: 8px;
+            width: 100%;
+            object-fit: cover;
+            border-radius: 16px !important;
           }
         }
-        
 
-        .main_image{
-          width: 70%;
-          border-radius: 16px;
+        .main_image {
+          width: 100%;
+          border-radius: 20px;
+          padding: 8px;
         }
       }
     }
 
-    .right_info_side{
-      width: 100%;
-      height: 100%;
-      border: solid 1px blue;
+    .right_info_side {
+      padding: 8px;
+      .content {
+        border: solid 1px black;
+        border-radius: 20px;
+        height: 100%;
+        padding: 20px;
+        .car_brand {
+          width: 100%;
+          justify-content: space-between;
+          p {
+            font-size: 15px !important;
+            margin: 0;
+          }
+        }
+
+        h1 {
+          color: #1a202c;
+        }
+
+        p {
+          color: #abbacf;
+          font-size: 20px;
+          margin: 15px 0px;
+          span {
+            color: #596780;
+            margin-left: 20px;
+            font-weight: bold;
+          }
+          @media (max-width: 443px) {
+            font-size: 16px;
+          }
+        }
+
+        .calc {
+          margin: 25px 0px;
+          .slider {
+            display: flex;
+            align-items: center;
+
+            input[type="range"] {
+              width: 65%;
+              -webkit-appearance: none;
+              max-height: 10px;
+              background: rgba(255, 255, 255, 0.6);
+              & {
+                ::-webkit-slider-thumb {
+                  -webkit-appearance: none;
+                  height: 20px;
+                  width: 20px;
+                  border-radius: 50%;
+                  background: #6a8fff;
+                  cursor: ew-resize;
+                  transition: background 0.3s ease-in-out;
+                  margin-top: -5px;
+                }
+                &::-webkit-slider-runnable-track {
+                  -webkit-appearance: none;
+                  box-shadow: none;
+                  border: none;
+                  background: transparent;
+                }
+                &::-moz-range-track {
+                  -webkit-appearance: none;
+                  box-shadow: none;
+                  border: none;
+                  background: transparent;
+                }
+                &::-ms-track {
+                  -webkit-appearance: none;
+                  box-shadow: none;
+                  border: none;
+                  background: transparent;
+                }
+                &::-webkit-slider-runnable-track {
+                  background: rgb(203, 203, 203);
+                  max-height: 10px;
+                  border-radius: 7px;
+                  border: 0;
+                }
+                &:focus {
+                  border: 0;
+                }
+
+                &:focus-visible {
+                  border: 0 !important;
+                  outline: 0 !important;
+                }
+              }
+
+              span {
+                margin-left: 20px;
+              }
+            }
+          }
+        }
+      }
     }
+  }
+}
+
+.bottom {
+  margin-top: 20px;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  .buy_button {
+    background-color: #3563e9;
+    color: white;
+    border: 0;
+    font-size: 16px;
+    border-radius: 4px;
+    padding: 10px 26px;
+    max-height: 50px;
+    margin-left: 170px;
   }
 }

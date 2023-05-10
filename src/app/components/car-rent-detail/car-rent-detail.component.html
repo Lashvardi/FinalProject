@@ -1,40 +1,50 @@
-<div class="rent_detail_box">
-  <div class="content_box">
-    <div class="left_Image_side">
-      <div class="image_box">
-        <img class="main_image"  src="{{ car?.imageUrl1 }}" alt="" />
+<div class="rent_detail_box container">
+  <div class="content_box row">
+    <div class="left_Image_side col-lg-6">
+      <div class="image_box container">
+          <div class="row">
+              <img class="main_image col-12"  src="{{car?.imageUrl1}}" alt="" />
 
-        <div class="small_images">
-          <img class="small_image" src="{{ car?.imageUrl2 }}" alt="" />
-          <img  class="small_image" src="{{ car?.imageUrl3 }}" alt="" />
-        </div>
+              <div class="small_images container">
+                  <div class="row">
+                      <img class="small_image col-6" src="{{car?.imageUrl2}}" alt="" />
+                      <img  class="small_image col-6" src="{{car?.imageUrl3}}" alt="" />
+                  </div>
+              </div>
+          </div>
       </div>
     </div>
 
-    <div class="right_info_side">
-        <h1>{{car?.brand}}</h1>
-        <h1>{{car?.model}}</h1>
-        <h1>{{car?.year}}</h1>
-        <h1>{{car?.fuelCapacity}}</h1>
-        <h1>{{car?.transmission}}</h1>
-        <h1>{{car?.capacity}}</h1>
-        <h1>{{car?.price}}₾</h1>
-
-        <div>
-          <label for="multiplier">რამდენი დღით გსურთ ქირაობა?</label>
-          <input type="range" id="multiplier" [(ngModel)]="multiplier" min="1" max="30" step="1">
-          <span>{{ multiplier }} დღე</span>
-          <div *ngIf="car">
-            Result: {{ multiplier * car.price }}
+    <div class="right_info_side col-lg-6">
+      <div class="content">
+          <div class="car_brand d-flex">
+              <p>{{car?.brand}}</p>
           </div>
-          <div *ngIf="!car">
-            სულ გადასახდელი: 0
-          </div>        </div>
-        
-        <button (click)="BuyCar(PhoneNumber, car?.id ?? 0, multiplier)">ყიდვააა</button>
-
+          <h1>{{car?.model}}</h1>
+          <p>გამოშვების წელი <span>{{car?.year}}</span></p>
+          <p>საწვავი ავზის მოცულობა <span>{{car?.fuelCapacity}} ლიტრი</span></p>
+          <p>ტრანსმისია <span>{{car?.transmission}}</span></p>
+          <p>ტევადობა <span>{{car?.capacity}} კაცი</span></p>
+  
+          <div class="calc">
+            <label for="multiplier">რამდენი დღით გსურთ შეძენა?</label>
+            <div class="slider">
+              <input type="range" id="multiplier" [(ngModel)]="multiplier" min="1" max="30" step="1">
+              <span>{{ multiplier }} დღე</span>
+            </div>
+            <div class="ifcar" *ngIf="car">
+              სულ გადასახდელი {{ multiplier * car.price }} ₾
+            </div>
+            <div class="ifcar" *ngIf="!car">
+              სულ გადასახდელი: 0
+            </div>         </div> 
+          
+          <div class="bottom d-flex">
+              <p>ფასი: <span>{{car?.price}}₾</span></p>
+              <button class="buy_button" (click)="BuyCar(PhoneNumber, car?.id ?? 0, multiplier)">ყიდვა</button>
+          </div>
+  
+      </div>
     </div>
   </div>
 </div>
-
-<!-- <app-map></app-map> -->
