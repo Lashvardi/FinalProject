@@ -1,1 +1,40 @@
+<div class="rent_detail_box">
+  <div class="content_box">
+    <div class="left_Image_side">
+      <div class="image_box">
+        <img class="main_image"  src="{{ car?.imageUrl1 }}" alt="" />
+
+        <div class="small_images">
+          <img class="small_image" src="{{ car?.imageUrl2 }}" alt="" />
+          <img  class="small_image" src="{{ car?.imageUrl3 }}" alt="" />
+        </div>
+      </div>
+    </div>
+
+    <div class="right_info_side">
+        <h1>{{car?.brand}}</h1>
+        <h1>{{car?.model}}</h1>
+        <h1>{{car?.year}}</h1>
+        <h1>{{car?.fuelCapacity}}</h1>
+        <h1>{{car?.transmission}}</h1>
+        <h1>{{car?.capacity}}</h1>
+        <h1>{{car?.price}}₾</h1>
+
+        <div>
+          <label for="multiplier">რამდენი დღით გსურთ შეძენა?</label>
+          <input type="range" id="multiplier" [(ngModel)]="multiplier" min="1" max="30" step="1">
+          <span>{{ multiplier }} დღე</span>
+          <div *ngIf="car">
+            Result: {{ multiplier * car.price }}
+          </div>
+          <div *ngIf="!car">
+            სულ გადასახდელი: 0
+          </div>        </div>
+        
+        <button (click)="BuyCar(PhoneNumber, car?.id ?? 0, multiplier)">ყიდვააა</button>
+
+    </div>
+  </div>
+</div>
+
 <!-- <app-map></app-map> -->
