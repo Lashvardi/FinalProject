@@ -32,6 +32,7 @@ import { NgxMapboxGLModule } from 'ngx-mapbox-gl';
 import { MapComponent } from './components/map/map.component';
 import { MapInfoBoxComponent } from './components/map-info-box/map-info-box.component';
 import { MessagesComponent } from './components/messages/messages.component';
+import { NotificationBoxComponent } from './components/notification-box/notification-box.component';
 
 @NgModule({
   declarations: [
@@ -60,6 +61,7 @@ import { MessagesComponent } from './components/messages/messages.component';
     MapComponent,
     MapInfoBoxComponent,
     MessagesComponent,
+    NotificationBoxComponent,
   ],
   imports: [
     BrowserModule,

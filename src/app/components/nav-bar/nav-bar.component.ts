@@ -8,6 +8,7 @@ import { AuthServiceService } from 'src/app/services/auth-service.service';
 })
 export class NavBarComponent {
   sidebarOpen = false;
+  showNotifications: boolean = false;
 
   toggleSidebar() {
     this.sidebarOpen = !this.sidebarOpen;

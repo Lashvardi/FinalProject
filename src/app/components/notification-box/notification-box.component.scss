@@ -1,0 +1,29 @@
+/* CSS for the notifications window */
+.notifications-window {
+    position: absolute;
+    top: 90px; /* Adjust the top position as needed */
+    right: 10px; /* Adjust the right position as needed */
+    width: 400px;
+    background-color: #fff;
+    border-radius: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+  }
+  
+  /* CSS for individual notification messages */
+  .notification {
+    margin-bottom: 10px;
+    padding: 5px;
+    border-radius: 5px;
+  }
+  
+  .notification p {
+    margin: 0;
+    padding: 0;
+    color: #333;
+  }
+  
+  .notification .timestamp {
+    font-size: 12px;
+  }
+  

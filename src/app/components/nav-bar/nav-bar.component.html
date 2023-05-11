@@ -17,11 +17,15 @@
     <div *ngIf="AuthService.isLoggedIn()" class="nav_item">
       <img
         class="hoverable"
-        onclick=""
+        (click)="showNotifications = !showNotifications"
         src="../../../assets/notification-icon.svg"
         alt=""
       />
+      <div *ngIf="showNotifications">
+        <app-notification-box></app-notification-box>
+      </div>
     </div>
+
     <div *ngIf="AuthService.isLoggedIn()" class="nav_item hoverable">
       <a [routerLink]="'/Profile'"
         ><img src="../../../assets/settings-icon.svg" alt=""
