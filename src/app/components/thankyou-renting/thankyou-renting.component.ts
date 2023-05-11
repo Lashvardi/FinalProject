@@ -12,7 +12,7 @@ export class ThankyouRentingComponent {
 
   ngOnInit(): void {
     setTimeout(() => {
-      this.router.navigate(['/profile']);
+      this.router.navigate(['/Profile']);
     }, 3000);
   }
 }
