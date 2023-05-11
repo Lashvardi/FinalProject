@@ -33,6 +33,8 @@ import { MapComponent } from './components/map/map.component';
 import { MapInfoBoxComponent } from './components/map-info-box/map-info-box.component';
 import { MessagesComponent } from './components/messages/messages.component';
 import { NotificationBoxComponent } from './components/notification-box/notification-box.component';
+import { RentedCarsComponent } from './components/rented-cars/rented-cars.component';
+import { TakenCarsComponent } from './components/taken-cars/taken-cars.component';
 
 @NgModule({
   declarations: [
@@ -62,6 +64,8 @@ import { NotificationBoxComponent } from './components/notification-box/notifica
     MapInfoBoxComponent,
     MessagesComponent,
     NotificationBoxComponent,
+    RentedCarsComponent,
+    TakenCarsComponent,
   ],
   imports: [
     BrowserModule,

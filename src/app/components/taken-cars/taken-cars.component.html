@@ -1,0 +1,15 @@
+<div class="wrapper">
+  <div class="ticket" *ngFor="let car of Ticekts">
+    <div class="container">
+      <div class="ticket-header">
+        <p class="car-id">Car ID: {{ car.carId }}</p>
+        <p class="brand-model">{{ car.carBrand }} - {{ car.carModel }}</p>
+      </div>
+      <div class="ticket-body">
+        <p class="city">City: {{ car.city }}</p>
+        <p class="multiplier">Multiplier: {{ car.multiplier }} დღით</p>
+        <p class="price-paid">Price Paid: {{ car.pricePaid }} ლ</p>
+      </div>
+    </div>
+  </div>
+</div>
