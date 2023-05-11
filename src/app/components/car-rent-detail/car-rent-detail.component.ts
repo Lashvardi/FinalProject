@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { forkJoin } from 'rxjs';
 import { Car } from 'src/app/models/car';
 import { GetCarService } from 'src/app/services/get-car.service';
@@ -20,7 +20,8 @@ export class CarRentDetailComponent {
     private route: ActivatedRoute,
     private carService: GetCarService,
     private purchase: PurchaseCarService,
-    private Message: MessageService
+    private Message: MessageService,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -63,10 +64,14 @@ export class CarRentDetailComponent {
       ([purchaseResponse, sendMessageResponse]) => {
         console.log('Car purchased successfully:', purchaseResponse);
         console.log('Message sent successfully:', sendMessageResponse);
+
       },
       (error) => {
         console.error('Error occurred:', error);
       }
+      
     );
+    this.router.navigate(['/thankyourenting']);
+
   }
 }

@@ -13,6 +13,7 @@ import { CarRentDetailComponent } from './components/car-rent-detail/car-rent-de
 import { AddCarComponent } from './components/add-car/add-car.component';
 import { MessagesComponent } from './components/messages/messages.component';
 import { AuthGuard } from './guards/auth.guard'; // Import the AuthGuard
+import { ThankyouRentingComponent } from './components/thankyou-renting/thankyou-renting.component';
 
 const routes: Routes = [
   {
@@ -45,6 +46,10 @@ const routes: Routes = [
     path: 'cars/:id',
     component: CarRentDetailComponent,
     canActivate: [AuthGuard],
+  },
+  {
+    path: 'thankyourenting',
+    component: ThankyouRentingComponent,
   },
   {
     path: 'Profile',
