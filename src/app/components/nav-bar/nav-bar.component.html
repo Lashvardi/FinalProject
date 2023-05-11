@@ -1,22 +1,47 @@
 <div class="navbar_container">
   <div class="left_side">
-    <img [routerLink]="'/'" class="pointer" src="../../../assets/Logo.svg" alt="">
+    <img
+      [routerLink]="'/'"
+      class="pointer"
+      src="../../../assets/Logo.svg"
+      alt=""
+    />
   </div>
 
-
-  <div  class="right_side">
-    <div *ngIf="AuthService.isLoggedIn()"class="nav_item hoverable">
-      <a routerLink="/favorites"><img src="../../../assets/favorite-icon.svg" alt=""></a>
+  <div class="right_side">
+    <div *ngIf="AuthService.isLoggedIn()" class="nav_item hoverable">
+      <a routerLink="/favorites"
+        ><img src="../../../assets/favorite-icon.svg" alt=""
+      /></a>
     </div>
     <div *ngIf="AuthService.isLoggedIn()" class="nav_item">
-      <img class="hoverable" onclick="" src="../../../assets/notification-icon.svg" alt="">
+      <img
+        class="hoverable"
+        onclick=""
+        src="../../../assets/notification-icon.svg"
+        alt=""
+      />
     </div>
     <div *ngIf="AuthService.isLoggedIn()" class="nav_item hoverable">
-      <a [routerLink]="'/Profile'"><img src="../../../assets/settings-icon.svg" alt=""></a>
+      <a [routerLink]="'/Profile'"
+        ><img src="../../../assets/settings-icon.svg" alt=""
+      /></a>
     </div>
     <div class="nav_item">
-      <button [routerLink]="'/Authorization'" *ngIf="!AuthService.isLoggedIn()" class="Login_button">ავტორიზაცია</button>
-      <button *ngIf="AuthService.isLoggedIn()" (click)="AuthService.logout()" class="Logout_button">გამოსვლა</button>
+      <button
+        [routerLink]="'/Authorization'"
+        *ngIf="!AuthService.isLoggedIn()"
+        class="Login_button"
+      >
+        რეგისტრაცია
+      </button>
+      <button
+        *ngIf="AuthService.isLoggedIn()"
+        (click)="AuthService.logout()"
+        class="Logout_button"
+      >
+        გამოსვლა
+      </button>
     </div>
   </div>
 </div>
