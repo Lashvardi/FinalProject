@@ -36,6 +36,7 @@ import { NotificationBoxComponent } from './components/notification-box/notifica
 import { RentedCarsComponent } from './components/rented-cars/rented-cars.component';
 import { TakenCarsComponent } from './components/taken-cars/taken-cars.component';
 import { ThankyouRentingComponent } from './components/thankyou-renting/thankyou-renting.component';
+import { CarsListComponent } from './components/cars-list/cars-list.component';
 
 @NgModule({
   declarations: [
@@ -68,6 +69,7 @@ import { ThankyouRentingComponent } from './components/thankyou-renting/thankyou
     RentedCarsComponent,
     TakenCarsComponent,
     ThankyouRentingComponent,
+    CarsListComponent,
   ],
   imports: [
     BrowserModule,
