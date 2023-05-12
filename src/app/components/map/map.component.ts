@@ -8,7 +8,7 @@ import { FeatureCollection } from 'geojson';
 @Component({
   selector: 'app-map',
   templateUrl: './map.component.html',
-  styleUrls: ['./map.component.scss']
+  styleUrls: ['./map.component.scss'],
 })
 export class MapComponent {
   car: Car | undefined;
@@ -49,41 +49,26 @@ export class MapComponent {
   infoBoxDistance: string | null = null;
   mapLoading: boolean = true;
 
-
-
   markers: Array<{ latitude: number; longitude: number; type?: string }> = [];
 
   getClusterRadius(zoom: number) {
-    return Math.min(
-      Math.max(
-        50 / Math.pow(2, zoom - 9),
-        5
-      ),
-      50
-    );
+    return Math.min(Math.max(50 / Math.pow(2, zoom - 9), 5), 50);
   }
-
-
-
 
   onMapLoad(map: mapboxgl.Map) {
     this.mapLoading = false;
-    map.loadImage(
-      '../../../assets/Icon.png',
-      (error, image) => {
-        if (error) {
-          console.error('Error loading custom marker image:', error);
-          return;
-        }
-        if (image) {
-          map.addImage('custom-marker', image as HTMLImageElement | ImageBitmap);
-        } else {
-          console.error('Image is undefined.');
-        }
+    map.loadImage('../../../assets/Icon.png', (error, image) => {
+      if (error) {
+        console.error('Error loading custom marker image:', error);
+        return;
       }
-    );
+      if (image) {
+        map.addImage('custom-marker', image as HTMLImageElement | ImageBitmap);
+      } else {
+        console.error('Image is undefined.');
+      }
+    });
   }
-
 
   isValidCoordinate(coord: any): boolean {
     if (!Array.isArray(coord) || coord.length !== 2) {
@@ -101,14 +86,17 @@ export class MapComponent {
     );
   }
 
-  async fetchLocationInfo(latitude: number, longitude: number): Promise<string> {
+  async fetchLocationInfo(
+    latitude: number,
+    longitude: number
+  ): Promise<string> {
     const geocodingAPIURL = `https://api.mapbox.com/geocoding/v5/mapbox.places/${longitude},${latitude}.json?access_token=<Insert YOur Token>`;
 
     try {
       const response = await fetch(geocodingAPIURL);
       const data = await response.json();
       if (data.features && data.features.length > 0) {
-        console.log(data)
+        console.log(data);
         return data.features[0].text;
       } else {
         console.error('No location information found');
@@ -178,7 +166,10 @@ export class MapComponent {
     type: 'FeatureCollection',
     features: [],
   };
-  async onMarkerClick(marker: { latitude: number; longitude: number }, event: any) {
+  async onMarkerClick(
+    marker: { latitude: number; longitude: number },
+    event: any
+  ) {
     if (this.userLocation) {
       const markerCoords = event.lngLat;
 
@@ -187,8 +178,8 @@ export class MapComponent {
       console.log(`დისტანცია: ${distanceInKilometers.toFixed(2)} კილომეტრი`);
 
       this.infoBoxImageSrc = this.car?.imageUrl1 || null;
-      this.infoBoxModel =  this.car?.model || null;
-      this.infoBoxMark =  this.car?.brand || null;
+      this.infoBoxModel = this.car?.model || null;
+      this.infoBoxMark = this.car?.brand || null;
       this.infoBoxDistance = `დისტანცია: ${distanceInKilometers.toFixed(
         2
       )} კილომეტრი`;
@@ -215,8 +206,15 @@ export class MapComponent {
     );
   }
 
-  convertToGeoJSON(markers: Array<{ latitude: number; longitude: number; icon: string; type?: string }>): any {
-    const features = markers.map(marker => ({
+  convertToGeoJSON(
+    markers: Array<{
+      latitude: number;
+      longitude: number;
+      icon: string;
+      type?: string;
+    }>
+  ): any {
+    const features = markers.map((marker) => ({
       type: 'Feature',
       geometry: {
         type: 'Point',
@@ -232,8 +230,10 @@ export class MapComponent {
       features: features,
     };
   }
-  GenerateMarker(cars: Car[]): Array<{ latitude: number; longitude: number; type?: string }> {
-    const markers: { latitude: number; longitude: number; }[] = [];
+  GenerateMarker(
+    cars: Car[]
+  ): Array<{ latitude: number; longitude: number; type?: string }> {
+    const markers: { latitude: number; longitude: number }[] = [];
 
     cars.forEach((car) => {
       markers.push({ latitude: car.latitude, longitude: car.longitude });
@@ -266,7 +266,6 @@ export class MapComponent {
           this.markers = this.GenerateMarker([this.car]);
         }
 
-
         if (callback) {
           callback();
         }
@@ -288,12 +287,12 @@ export class MapComponent {
       const distanceInKilometers = distanceInMeters / 1000;
       console.log(`დისტანცია: ${distanceInKilometers.toFixed(2)} კილომეტრი`);
 
-
-      this.infoBoxImageSrc = this.car?.imageUrl1 || `აქ მანქანის სახელი უნდა იყოს`;
-      this.infoBoxModel = this.car?.brand || "აქ მანქანის ბრენდი";
+      this.infoBoxImageSrc =
+        this.car?.imageUrl1 || `აქ მანქანის სახელი უნდა იყოს`;
+      this.infoBoxModel = this.car?.brand || 'აქ მანქანის ბრენდი';
       this.infoBoxImageSrc = this.car?.imageUrl1 || null;
-      this.infoBoxModel =  this.car?.model || null;
-      this.infoBoxMark =  this.car?.brand || null;
+      this.infoBoxModel = this.car?.model || null;
+      this.infoBoxMark = this.car?.brand || null;
 
       this.infoBoxDistance = `დისტანცია: ${distanceInKilometers.toFixed(
         2

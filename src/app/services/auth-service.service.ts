@@ -21,6 +21,7 @@ export class AuthServiceService {
       tap((response) => {
         localStorage.setItem('jwtToken', response.token);
         localStorage.setItem("PhoneNumber", response.phoneNumber)
+        localStorage.setItem("UserEmail", response.email)
         console.log('====================================');
         console.log(response);
         console.log('====================================');
@@ -39,6 +40,7 @@ export class AuthServiceService {
   logout(): void {
     localStorage.removeItem('jwtToken');
     localStorage.removeItem('PhoneNumber');
+    localStorage.removeItem('UserEmail');
     location.reload();
   }
 }

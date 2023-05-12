@@ -32,6 +32,17 @@
                 type="text"
                 class="form-control"
                 id="floatingInput"
+                placeholder="Your@gmail.com"
+                name="email"
+                [(ngModel)]="user.email"
+              />
+              <label for="floatingInput">მეილი</label>
+            </div>
+            <div class="form-floating mb-3">
+              <input
+                type="text"
+                class="form-control"
+                id="floatingInput"
                 placeholder="დოლაბერიძე"
                 name="LastName"
                 [(ngModel)]="user.lastName"

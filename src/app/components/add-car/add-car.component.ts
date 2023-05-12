@@ -2,13 +2,23 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Car } from 'src/app/models/car';
 import { GetCarService } from 'src/app/services/get-car.service';
-import {CarOption} from "./carOption"
+import { CarOption } from './carOption';
 @Component({
   selector: 'app-add-car',
   templateUrl: './add-car.component.html',
   styleUrls: ['./add-car.component.scss'],
 })
 export class AddCarComponent {
+  GetLocation() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        this.car.latitude = position.coords.latitude;
+        this.car.longitude = position.coords.longitude;
+      });
+    } else {
+      console.log('Geolocation is not supported by this browser.');
+    }
+  }
   car: Car = {
     id: 0,
     brand: '',
@@ -20,19 +30,17 @@ export class AddCarComponent {
     price: 70,
     capacity: 4,
     transmission: '',
-    createdBy: localStorage.getItem("PhoneNumber") || '',
+    createdBy: localStorage.getItem('PhoneNumber') || '',
     fuelCapacity: 70,
     city: '',
     latitude: 0,
     longitude: 0,
-    Multiplier: 1
+    Multiplier: 1,
+    createdByEmail: localStorage.getItem('UserEmail') || '',
   };
-
-
 
   selectedCarBrand: string = '';
   selectedCarModel: string = '';
-
 
   carBrands: CarOption[] = [
     { label: 'Ferrari', value: 'Ferrari' },
@@ -102,24 +110,16 @@ export class AddCarComponent {
     this.car.model = value;
   }
   form = new FormGroup({
-    carBrand: new FormControl('',),
-    carModel: new FormControl('',),
+    carBrand: new FormControl(''),
+    carModel: new FormControl(''),
   });
-
 
   constructor(private getCarService: GetCarService) {}
 
   onSubmit(): void {
     this.getCarService.addCar(this.car).subscribe((newCar: Car) => {
-      console.log(`Added new car: ${JSON.stringify(newCar)}`);
-      if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition((position) => {
-          this.car.latitude = position.coords.latitude;
-          this.car.longitude = position.coords.longitude;
-        });
-      } else {
-        console.log("Geolocation is not supported by this browser.");
-      }
+      this.car.createdByEmail = localStorage.getItem('UserEmail') || '';
+      console.log(`Added new car: ${newCar}`);
       this.car = {
         id: 0,
         brand: '',
@@ -136,7 +136,8 @@ export class AddCarComponent {
         city: '',
         latitude: 0,
         longitude: 0,
-        Multiplier: 1
+        Multiplier: 1,
+        createdByEmail: '',
       };
     });
   }

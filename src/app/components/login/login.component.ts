@@ -6,23 +6,27 @@ import { AuthServiceService } from 'src/app/services/auth-service.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent {
   user: User = {
     phoneNumber: '',
     password: '',
     firstName: '',
-    lastName: ''
+    lastName: '',
+    email: '',
   };
 
-  constructor(private authService: AuthServiceService, private router: Router) {}
+  constructor(
+    private authService: AuthServiceService,
+    private router: Router
+  ) {}
 
   onSubmit(): void {
     this.authService.login(this.user).subscribe(
       (response) => {
         console.log('Login successful!');
-        this.router.navigate(['/'])
+        this.router.navigate(['/']);
       },
       (error) => {
         console.log('Login failed!');

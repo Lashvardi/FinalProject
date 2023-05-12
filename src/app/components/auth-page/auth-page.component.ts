@@ -13,7 +13,8 @@ export class AuthPageComponent {
     phoneNumber: '',
     password: '',
     firstName: '',
-    lastName: ''
+    lastName: '',
+    email: ''
   };
 
   constructor(private authService: AuthServiceService, private router: Router) {}

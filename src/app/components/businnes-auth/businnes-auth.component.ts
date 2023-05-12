@@ -6,17 +6,21 @@ import { AuthServiceService } from 'src/app/services/auth-service.service';
 @Component({
   selector: 'app-businnes-auth',
   templateUrl: './businnes-auth.component.html',
-  styleUrls: ['./businnes-auth.component.scss']
+  styleUrls: ['./businnes-auth.component.scss'],
 })
 export class BusinnesAuthComponent {
   user: User = {
     phoneNumber: '',
     password: '',
     firstName: '',
-    lastName: ''
+    lastName: '',
+    email: '',
   };
 
-  constructor(private authService: AuthServiceService, private router: Router) {}
+  constructor(
+    private authService: AuthServiceService,
+    private router: Router
+  ) {}
 
   onSubmit(): void {
     this.authService.register(this.user).subscribe(
