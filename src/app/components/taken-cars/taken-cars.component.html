@@ -1,14 +1,27 @@
 <div class="wrapper">
   <div class="ticket" *ngFor="let car of Ticekts">
-    <div class="container">
-      <div class="ticket-header">
-        <p class="car-id">Car ID: {{ car.carId }}</p>
-        <p class="brand-model">{{ car.carBrand }} - {{ car.carModel }}</p>
-      </div>
-      <div class="ticket-body">
-        <p class="city">City: {{ car.city }}</p>
-        <p class="multiplier">Multiplier: {{ car.multiplier }} დღით</p>
-        <p class="price-paid">Price Paid: {{ car.pricePaid }} ლ</p>
+    <div class="rented_car">
+      <div class="text_content">
+        <div class="main_info">
+          <h1>{{ car.carBrand }} {{ car.carModel }}</h1>
+          <p class="id">{{ car.carId }}</p>
+        </div>
+        <div class="rental_details">
+          <div class="detail_city detail">
+            <p>ქალაქი:</p>
+            <p>{{ car.city }}</p>
+          </div>
+
+          <div class="detail time">
+            <p>დღით</p>
+            <p>{{ car.multiplier }} დღით</p>
+          </div>
+
+          <div class="detail paid">
+            <p>გადახდილია:</p>
+            <p>{{ car.pricePaid }} ლარი</p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
