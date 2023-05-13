@@ -11,7 +11,22 @@
 }
 
 .container{
-    margin-top: 70px;
-    
-    width: 600px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0;
+    flex-direction: row-reverse;
+}
+
+.login_side{
+    width: 70%;
+}
+
+
+.wrapper{
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
