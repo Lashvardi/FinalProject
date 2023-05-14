@@ -1,8 +1,16 @@
+
+
+<app-map-info-box
+[imageSrc]="infoBoxImageSrc"
+[distance]="infoBoxDistance"
+[CarModel]="infoBoxModel"
+[Carbrand]="infoBoxMark"
+></app-map-info-box>
 <mgl-map
   #map
   [style]="'mapbox://styles/lashvardi/clfgxyw4700ln01mriqocpnek'"
   [zoom]="[13]"
-  [center]="userLocation || [42.716667, 42.783333]"
+  [center]="markers.length > 0 ? [markers[0].longitude, markers[0].latitude] : [42.716667, 42.783333]"
   (load)="onMapLoad($event)"
 >
   <mgl-control mglNavigation></mgl-control>
@@ -108,9 +116,4 @@
   ></mgl-layer>
 </mgl-map>
 
-<app-map-info-box
-  [imageSrc]="infoBoxImageSrc"
-  [distance]="infoBoxDistance"
-  [CarModel]="infoBoxModel"
-  [Carbrand]="infoBoxMark"
-></app-map-info-box>
+

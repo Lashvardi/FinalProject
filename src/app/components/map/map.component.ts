@@ -34,7 +34,7 @@ export class MapComponent {
         (car) => {
           this.car = car;
           console.log(this.car);
-          if (this.userLocation && this.car) {
+          if (this.car) {
             this.markers = this.GenerateMarker([this.car]);
           }
         },
