@@ -6,16 +6,42 @@
 
 
 .container-fluid{
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 25px;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 25px;
 }
-  .left_side{
-    display: flex;
-    flex-direction: row;
-  }
+.left_side{
+  display: flex;
+  flex-direction: row;
+ }
 
-  .filter_container{
-    width: 300px;
-  }
+.filter_container{
+  width: 300px;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.pagination button {
+  margin: 0 5px;
+  padding: 5px 10px;
+  border: none;
+  background-color: #e0e0e0;
+  color: #333;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.pagination button:hover {
+ background-color: #ccc;
+}
+
+.pagination button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}

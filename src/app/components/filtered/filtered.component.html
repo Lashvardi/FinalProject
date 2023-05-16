@@ -86,12 +86,14 @@
 
   <ngx-skeleton-loader *ngIf="cars.length < 1" count="25"
     [theme]="{height: '350px', width:'270px', margin:'25px', background: 'grey', opacity:'0.6'}"></ngx-skeleton-loader>
+</div>
 
 
-    <div>
-      <button *ngFor="let page of totalPagesArray()" [disabled]="page === currentPage" (click)="goToPage(page)">
-        {{ page }}
-      </button>
-    </div>
-
+<!-- ? პაგინაცია -->
+<div class="pagination">
+  <button (click)="goToPage(1)" [disabled]="currentPage === 1">First</button>
+  <button *ngFor="let page of visiblePages" [disabled]="page === currentPage" (click)="goToPage(page)">
+    {{ page }}
+  </button>
+  <button (click)="goToPage(totalPages)" [disabled]="currentPage === totalPages">Last</button>
 </div>

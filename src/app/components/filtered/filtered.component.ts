@@ -17,6 +17,7 @@ export class FilteredComponent {
   // ? Pagination Variables
   public totalPages: number = 0;
   public currentPage: number = 1;
+  visiblePages: number[] = [];
 
   // ? Filter Variables
   capacity: number = 0;
@@ -32,14 +33,7 @@ export class FilteredComponent {
         this.cities = cities;
       }
     );
-
-    this.getCar.getPaginatedCars(1, 10).subscribe(
-      (paginatedData: PaginatedData<Car>) => {
-        this.cars = paginatedData.data;
-      }
-    );
   }
-
 
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
@@ -48,26 +42,41 @@ export class FilteredComponent {
     });
   }
 
-  GetPaginatedCars(){
+  GetPaginatedCars() {
     this.getCar.getPaginatedCars(this.currentPage, 10).subscribe(
       (paginatedData: PaginatedData<Car>) => {
         this.cars = paginatedData.data;
-        this.totalPages = paginatedData.totalPages;
+        this.totalPages = Math.ceil(paginatedData.totalItems / 10); // Update totalPages based on totalItems and items per page
+        this.updateVisiblePages();
       }
     );
   }
+
 
   // ? Pagination Methods
   totalPagesArray(): number[] {
     return Array.from({ length: this.totalPages }, (_, index) => index + 1);
   }
 
+
+
   goToPage(page: number) {
     if (page >= 1 && page <= this.totalPages) {
       this.currentPage = page;
       this.updateQueryParams();
       this.GetPaginatedCars();
+      this.updateVisiblePages();
     }
+  }
+
+
+
+  updateVisiblePages() {
+    const totalPages = this.totalPages;
+    const currentPage = this.currentPage;
+    const start = Math.max(1, currentPage - 4);
+    const end = Math.min(start + 9, totalPages);
+    this.visiblePages = Array.from({ length: end - start + 1 }, (_, index) => start + index);
   }
 
   updateQueryParams() {
@@ -75,6 +84,8 @@ export class FilteredComponent {
     this.router.navigate([], { queryParams, queryParamsHandling: 'merge'});
   }
 
+
+  // ? Capacity Filter
   getCarsByCapacity() {
     if (!this.capacity) {
       this.getCar.GetCars().subscribe(
