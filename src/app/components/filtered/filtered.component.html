@@ -84,5 +84,14 @@
     <app-cars-card *ngFor="let car of cars" [car]="car"></app-cars-card>
   </div>
 
+  <ngx-skeleton-loader *ngIf="cars.length < 1" count="25"
+    [theme]="{height: '350px', width:'270px', margin:'25px', background: 'grey', opacity:'0.6'}"></ngx-skeleton-loader>
+
+
+    <div>
+      <button *ngFor="let page of totalPagesArray()" [disabled]="page === currentPage" (click)="goToPage(page)">
+        {{ page }}
+      </button>
+    </div>
 
 </div>

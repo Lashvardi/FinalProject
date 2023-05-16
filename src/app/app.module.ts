@@ -37,7 +37,7 @@ import { RentedCarsComponent } from './components/rented-cars/rented-cars.compon
 import { TakenCarsComponent } from './components/taken-cars/taken-cars.component';
 import { ThankyouRentingComponent } from './components/thankyou-renting/thankyou-renting.component';
 import { CarsListComponent } from './components/cars-list/cars-list.component';
-
+import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 @NgModule({
   declarations: [
     AppComponent,
@@ -81,8 +81,8 @@ import { CarsListComponent } from './components/cars-list/cars-list.component';
     BsDatepickerModule.forRoot(),
     NgxMapboxGLModule.withConfig({
       accessToken: 'pk.eyJ1IjoibGFzaHZhcmRpIiwiYSI6ImNsZmd6MnlmNjBvYzQzcW5wdnVxY2IyMnQifQ.GMGF_9WLQhrpSfGnJ-W_LQ',
-    })
-
+    }),
+    NgxSkeletonLoaderModule
   ],
   providers: [],
   bootstrap: [AppComponent],

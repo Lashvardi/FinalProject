@@ -10,9 +10,11 @@
 
     <div class="cards_box">
       <app-cars-card
-        *ngFor="let car of cars.slice(20, 28)"
+        *ngFor="let car of cars.slice(20, 30)"
         [car]="car"
       ></app-cars-card>
     </div>
+    <ngx-skeleton-loader *ngIf="cars.length < 1" count="5" [theme]="{height: '350px', width:'270px', margin:'25px', background: 'grey', opacity:'0.6'}"></ngx-skeleton-loader>
+
   </div>
 </div>

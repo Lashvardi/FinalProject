@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { ServiceUrlBuilder } from 'src/ServiceUrlBuilder';
 import { Car } from '../models/car';
 import { Observable } from 'rxjs';
+import { PaginatedData } from '../models/paginated';
 @Injectable({
   providedIn: 'root',
 })
@@ -10,13 +11,18 @@ export class GetCarService {
   private static RESOURCE_URI: string = 'Car';
   private static Popular_URi: string = 'Car/popular';
   private static Favorite_URI: string = 'Users';
-
+  public static PAGINATED_URI: string = 'api/Car/paginated'
   constructor(private http: HttpClient) {}
 
   public GetCars() {
     return this.http.get<Car[]>(
       ServiceUrlBuilder.buildUrl(GetCarService.RESOURCE_URI)
     );
+  }
+
+  public getPaginatedCars(pageIndex: number, pageSize: number): Observable<PaginatedData<Car>> {
+    const url = ServiceUrlBuilder.buildRootUrl(`${GetCarService.PAGINATED_URI}?pageIndex=${pageIndex}&pageSize=${pageSize}`);
+    return this.http.get<PaginatedData<Car>>(url);
   }
 
   public GetCarById(id: number) {

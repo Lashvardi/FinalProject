@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Car } from 'src/app/models/car';
+import { PaginatedData } from 'src/app/models/paginated';
 import { GetCarService } from 'src/app/services/get-car.service';
 
 @Component({
@@ -8,30 +10,71 @@ import { GetCarService } from 'src/app/services/get-car.service';
   styleUrls: ['./filtered.component.scss'],
 })
 export class FilteredComponent {
+  // ? Car Variables
   cars: Car[] = [];
+
+
+  // ? Pagination Variables
+  public totalPages: number = 0;
+  public currentPage: number = 1;
+
+  // ? Filter Variables
+  capacity: number = 0;
   public cityName: string = '';
   public yearRange: string = '';
   public cities: string[] = [];
   public selectedCapacity: number = 0;
-  capacity: number = 0;
 
-  constructor(public getCar: GetCarService) {
+
+  constructor(public getCar: GetCarService, private router: Router, private route: ActivatedRoute) {
     this.getCar.getCities().subscribe(
       (cities) => {
         this.cities = cities;
       }
     );
 
-    this.getCar.getCarsByYear(1995, 2020).subscribe(
-      (cars) => {
-        this.cars = cars;
+    this.getCar.getPaginatedCars(1, 10).subscribe(
+      (paginatedData: PaginatedData<Car>) => {
+        this.cars = paginatedData.data;
       }
     );
   }
+
+
   ngOnInit() {
-    this.getCarsByCapacity();
+    this.route.queryParams.subscribe(params => {
+      this.currentPage = params['pageIndex'] ? +params['pageIndex'] : 1;
+      this.GetPaginatedCars();
+    });
   }
-  
+
+  GetPaginatedCars(){
+    this.getCar.getPaginatedCars(this.currentPage, 10).subscribe(
+      (paginatedData: PaginatedData<Car>) => {
+        this.cars = paginatedData.data;
+        this.totalPages = paginatedData.totalPages;
+      }
+    );
+  }
+
+  // ? Pagination Methods
+  totalPagesArray(): number[] {
+    return Array.from({ length: this.totalPages }, (_, index) => index + 1);
+  }
+
+  goToPage(page: number) {
+    if (page >= 1 && page <= this.totalPages) {
+      this.currentPage = page;
+      this.updateQueryParams();
+      this.GetPaginatedCars();
+    }
+  }
+
+  updateQueryParams() {
+    const queryParams = { pageIndex: this.currentPage };
+    this.router.navigate([], { queryParams, queryParamsHandling: 'merge'});
+  }
+
   getCarsByCapacity() {
     if (!this.capacity) {
       this.getCar.GetCars().subscribe(
@@ -44,11 +87,15 @@ export class FilteredComponent {
     }
   }
 
+  // ? Filter Methods
    getCarsByYearAndCity() {
     // No filter
     if (!this.cityName && !this.yearRange) {
-      this.getCar.GetCars().subscribe((cars) => (this.cars = cars));
-    }
+      this.getCar.getPaginatedCars(1, 10).subscribe(
+        (paginatedData: PaginatedData<Car>) => {
+          this.cars = paginatedData.data;
+        }
+      );    }
     // City filter only
     else if (this.cityName && !this.yearRange) {
       this.getCar.getCarsByCity(this.cityName).subscribe(
