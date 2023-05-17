@@ -106,8 +106,8 @@
 
 
 <!-- ? პაგინაცია -->
-<div class="pagination">
-  <button class="first_Page" (click)="goToPage(1)" [disabled]="currentPage === 1"></button>
+<div *ngIf="totalPages > 1 "class="pagination">
+  <button class="first_Page" (click)="goToPage(1)" [disabled]="currentPage === 1">1</button>
   <button *ngFor="let page of visiblePages" [disabled]="page === currentPage" (click)="goToPage(page)">
     {{ page }}
   </button>
