@@ -18,6 +18,8 @@ export class FilteredComponent {
   public totalPages: number = 0;
   public currentPage: number = 1;
   visiblePages: number[] = [];
+  public startYear: number = 0
+  public endYear: number = 0
 
   // ? Filter Variables
   capacity: number = 0;
@@ -36,21 +38,32 @@ export class FilteredComponent {
   }
 
   ngOnInit() {
-    this.route.queryParams.subscribe(params => {
+    this.route.queryParams.subscribe((params) => {
       this.currentPage = params['pageIndex'] ? +params['pageIndex'] : 1;
+      this.startYear = params['startYear'] ? +params['startYear'] : 0;
+      this.endYear = params['endYear'] ? +params['endYear'] : 0;
+      this.capacity = params['capacity'] ? +params['capacity'] : 0;
+      this.cityName = params['city'] ? params['city'] : '';
       this.GetPaginatedCars();
     });
   }
 
   GetPaginatedCars() {
-    this.getCar.getPaginatedCars(this.currentPage, 10).subscribe(
-      (paginatedData: PaginatedData<Car>) => {
+    this.getCar
+      .getPaginatedCars(this.capacity, this.startYear, this.endYear, this.cityName, this.currentPage, 10)
+      .subscribe((paginatedData: PaginatedData<Car>) => {
         this.cars = paginatedData.data;
-        this.totalPages = Math.ceil(paginatedData.totalItems / 10); // Update totalPages based on totalItems and items per page
+        this.totalPages = paginatedData.totalPages;
         this.updateVisiblePages();
-      }
-    );
+      });
   }
+
+  applyFilter() {
+    this.currentPage = 1;
+    this.updateQueryParams();
+    this.GetPaginatedCars();
+  }
+  
 
 
   // ? Pagination Methods
@@ -68,7 +81,7 @@ export class FilteredComponent {
       this.updateVisiblePages();
     }
   }
-
+  
 
 
   updateVisiblePages() {
@@ -79,65 +92,22 @@ export class FilteredComponent {
     this.visiblePages = Array.from({ length: end - start + 1 }, (_, index) => start + index);
   }
 
+
   updateQueryParams() {
-    const queryParams = { pageIndex: this.currentPage };
-    this.router.navigate([], { queryParams, queryParamsHandling: 'merge'});
+    const queryParams = {
+      city: this.cityName || null,
+      capacity: this.capacity || null,
+      startYear: this.startYear || null,
+      endYear: this.endYear || null,
+      pageIndex: this.currentPage,
+    };
+    this.router.navigate([], { queryParams, queryParamsHandling: 'merge' });
   }
+  
 
 
-  // ? Capacity Filter
-  getCarsByCapacity() {
-    if (!this.capacity) {
-      this.getCar.GetCars().subscribe(
-        (cars) => (this.cars = cars)
-      );
-    } else {
-      this.getCar.getCarsByCapacity(this.capacity).subscribe(
-        (cars) => (this.cars = cars)
-      );
-    }
-  }
 
-  // ? Filter Methods
-   getCarsByYearAndCity() {
-    // No filter
-    if (!this.cityName && !this.yearRange) {
-      this.getCar.getPaginatedCars(1, 10).subscribe(
-        (paginatedData: PaginatedData<Car>) => {
-          this.cars = paginatedData.data;
-        }
-      );    }
-    // City filter only
-    else if (this.cityName && !this.yearRange) {
-      this.getCar.getCarsByCity(this.cityName).subscribe(
-        (cars) => (this.cars = cars)
-      );
-    }
-    // Year filter only
-    else if (!this.cityName && this.yearRange) {
-      let startYear = 0;
-      let endYear = 0;
-      if (this.yearRange) {
-        [startYear, endYear] = this.yearRange
-          .split('-')
-          .map((y) => parseInt(y));
-      }
-      this.getCar.getCarsByYear(startYear, endYear).subscribe(
-        (cars) => (this.cars = cars)
-      );
-    }
-    // City and Year filters
-    else {
-      let startYear = 0;
-      let endYear = 0;
-      if (this.yearRange) {
-        [startYear, endYear] = this.yearRange
-          .split('-')
-          .map((y) => parseInt(y));
-      }
-      this.getCar
-        .getCarsByCityAndYear(this.cityName, startYear, endYear)
-        .subscribe((cars) => (this.cars = cars));
-    }
-  }
+
+
+
 }

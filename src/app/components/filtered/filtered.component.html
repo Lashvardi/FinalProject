@@ -8,75 +8,91 @@
       </select>
     </div>
     <div class="form-group">
-      <label for="yearInput">წლების</label>
-      <select id="yearInput" class="form-control" [(ngModel)]="yearRange">
-        <option value="1970-1975">1970-1975</option>
-        <option value="1975-1980">1975-1980</option>
-        <option value="1980-1985">1980-1985</option>
-        <option value="1985-1990">1985-1990</option>
-        <option value="1990-1995">1990-1995</option>
-        <option value="1995-2000">1995-2000</option>
-        <option value="2000-2005">2000-2005</option>
-        <option value="2005-2010">2005-2010</option>
-        <option value="2015-2020">2015-2020</option>
-        <option value="2020-2025">2020-2025</option>
-        <option value="1900-2025">All</option>
+      <label for="startYearInput">დასაწყისი წელი</label>
+      <select id="startYearInput" class="form-control" [(ngModel)]="startYear">
+        <option value="1970">1970</option>
+        <option value="1975">1975</option>
+        <option value="1980">1980</option>
+        <option value="1985">1985</option>
+        <option value="1990">1990</option>
+        <option value="1995">1995</option>
+        <option value="2000">2000</option>
+        <option value="2005">2005</option>
+        <option value="2015">2015</option>
+        <option value="2020">2020</option>
+        <option value="1900">All</option>
       </select>
+      
+      <label for="endYearInput">დასასრული წელი</label>
+      <select id="endYearInput" class="form-control" [(ngModel)]="endYear">
+        <option value="1975">1975</option>
+        <option value="1980">1980</option>
+        <option value="1985">1985</option>
+        <option value="1990">1990</option>
+        <option value="1995">1995</option>
+        <option value="2000">2000</option>
+        <option value="2005">2005</option>
+        <option value="2010">2010</option>
+        <option value="2020">2020</option>
+        <option value="2025">2025</option>
+        <option value="2025">All</option>
+      </select>
+      
     </div>
     <div class="form-group mt-5">
       <label>ტევადობა</label>
       <div class="form-check">
         <input type="radio" name="capacityInput" id="capacityInput2" class="form-check-input" value="2"
-          [(ngModel)]="capacity" (change)="getCarsByCapacity()" />
+          [(ngModel)]="capacity" />
         <label for="capacityInput2" class="form-check-label">2</label>
       </div>
       <div class="form-check">
         <input type="radio" name="capacityInput" id="capacityInput3" class="form-check-input" value="3"
-          [(ngModel)]="capacity" (change)="getCarsByCapacity()" />
+          [(ngModel)]="capacity" />
         <label for="capacityInput3" class="form-check-label">3</label>
       </div>
       <div class="form-check">
         <input type="radio" name="capacityInput" id="capacityInput4" class="form-check-input" value="4"
-          [(ngModel)]="capacity" (change)="getCarsByCapacity()" />
+          [(ngModel)]="capacity"/>
         <label for="capacityInput4" class="form-check-label">4</label>
       </div>
       <div class="form-check">
         <input type="radio" name="capacityInput" id="capacityInput5" class="form-check-input" value="5"
-          [(ngModel)]="capacity" (change)="getCarsByCapacity()" />
+          [(ngModel)]="capacity"/>
         <label for="capacityInput5" class="form-check-label">5</label>
       </div>
       <div class="form-check">
         <input type="radio" name="capacityInput" id="capacityInput6" class="form-check-input" value="6"
-          [(ngModel)]="capacity" (change)="getCarsByCapacity()" />
+          [(ngModel)]="capacity"/>
         <label for="capacityInput6" class="form-check-label">6</label>
       </div>
       <div class="form-check">
         <input type="radio" name="capacityInput" id="capacityInput7" class="form-check-input" value="7"
-          [(ngModel)]="capacity" (change)="getCarsByCapacity()" />
+          [(ngModel)]="capacity"/>
         <label for="capacityInput7" class="form-check-label">7</label>
       </div>
       <div class="form-check">
         <input type="radio" name="capacityInput" id="capacityInput8" class="form-check-input" value="8"
-          [(ngModel)]="capacity" (change)="getCarsByCapacity()" />
+          [(ngModel)]="capacity"/>
         <label for="capacityInput8" class="form-check-label">8</label>
       </div>
       <div class="form-check">
         <input type="radio" name="capacityInput" id="capacityInput9" class="form-check-input" value="9"
-          [(ngModel)]="capacity" (change)="getCarsByCapacity()" />
+          [(ngModel)]="capacity"/>
         <label for="capacityInput9" class="form-check-label">9</label>
       </div>
       <div class="form-check">
         <input type="radio" name="capacityInput" id="capacityInput10" class="form-check-input" value="10"
-          [(ngModel)]="capacity" (change)="getCarsByCapacity()" />
+          [(ngModel)]="capacity"/>
         <label for="capacityInput10" class="form-check-label">10</label>
       </div>
       <div class="form-check">
         <input type="radio" name="capacityInput" id="capacityInputAll" class="form-check-input" value=""
-          [(ngModel)]="capacity" (change)="getCarsByCapacity()" />
+          [(ngModel)]="capacity"/>
         <label for="capacityInputAll" class="form-check-label">ყველა</label>
       </div>
     </div>
-    <button class="btn btn-primary mt-5" (click)="getCarsByYearAndCity()">გაფილტვრა</button>
+    <button class="btn btn-primary mt-5" (click)="applyFilter()">გაფილტვრა</button>
   </div>
 
 
@@ -91,9 +107,9 @@
 
 <!-- ? პაგინაცია -->
 <div class="pagination">
-  <button (click)="goToPage(1)" [disabled]="currentPage === 1">First</button>
+  <button class="first_Page" (click)="goToPage(1)" [disabled]="currentPage === 1"></button>
   <button *ngFor="let page of visiblePages" [disabled]="page === currentPage" (click)="goToPage(page)">
     {{ page }}
   </button>
-  <button (click)="goToPage(totalPages)" [disabled]="currentPage === totalPages">Last</button>
+  <button class="last_Page" (click)="goToPage(totalPages)" [disabled]="currentPage === totalPages">ბოლო</button>
 </div>

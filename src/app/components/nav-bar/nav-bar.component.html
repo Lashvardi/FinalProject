@@ -9,11 +9,6 @@
   </div>
 
   <div class="right_side">
-    <div *ngIf="AuthService.isLoggedIn()" class="nav_item hoverable">
-      <a routerLink="/favorites"
-        ><img src="../../../assets/favorite-icon.svg" alt=""
-      /></a>
-    </div>
     <div *ngIf="AuthService.isLoggedIn()" class="nav_item">
       <img
         class="hoverable"

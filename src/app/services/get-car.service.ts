@@ -4,6 +4,7 @@ import { ServiceUrlBuilder } from 'src/ServiceUrlBuilder';
 import { Car } from '../models/car';
 import { Observable } from 'rxjs';
 import { PaginatedData } from '../models/paginated';
+
 @Injectable({
   providedIn: 'root',
 })
@@ -12,6 +13,9 @@ export class GetCarService {
   private static Popular_URi: string = 'Car/popular';
   private static Favorite_URI: string = 'Users';
   public static PAGINATED_URI: string = 'api/Car/paginated'
+  public static FILTER_URI: string = 'api/Car/filter'
+
+
   constructor(private http: HttpClient) {}
 
   public GetCars() {
@@ -20,10 +24,41 @@ export class GetCarService {
     );
   }
 
-  public getPaginatedCars(pageIndex: number, pageSize: number): Observable<PaginatedData<Car>> {
-    const url = ServiceUrlBuilder.buildRootUrl(`${GetCarService.PAGINATED_URI}?pageIndex=${pageIndex}&pageSize=${pageSize}`);
-    return this.http.get<PaginatedData<Car>>(url);
+  public getPaginatedCars(
+    capacity?: number,
+    startYear?: number,
+    endYear?: number,
+    city?: string,
+    pageIndex: number = 1,
+    pageSize: number = 10
+  ): Observable<PaginatedData<Car>> {
+    let params = new HttpParams();
+  
+    if (capacity) {
+      params = params.set('capacity', capacity.toString());
+    }
+  
+    if (startYear) {
+      params = params.set('startYear', startYear.toString());
+    }
+  
+    if (endYear) {
+      params = params.set('endYear', endYear.toString());
+    }
+  
+    if (city) {
+      params = params.set('city', city);
+    }
+  
+    params = params.set('pageIndex', pageIndex.toString()).set('pageSize', pageSize.toString());
+  
+    const url = ServiceUrlBuilder.buildRootUrl(GetCarService.FILTER_URI);
+  
+    return this.http.get<PaginatedData<Car>>(url, { params });
   }
+  
+
+  
 
   public GetCarById(id: number) {
     return this.http.get<Car>(
