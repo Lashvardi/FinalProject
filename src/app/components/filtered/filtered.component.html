@@ -1,6 +1,5 @@
 <div class="left_side">
   <div class="filter_container">
-
     <div class="form-group">
       <label for="cityInput">ქალაქი</label>
       <select id="cityInput" class="form-control" [(ngModel)]="cityName">
@@ -22,7 +21,7 @@
         <option value="2020">2020</option>
         <option value="1900">All</option>
       </select>
-      
+
       <label for="endYearInput">დასასრული წელი</label>
       <select id="endYearInput" class="form-control" [(ngModel)]="endYear">
         <option value="1975">1975</option>
@@ -37,79 +36,168 @@
         <option value="2025">2025</option>
         <option value="2025">All</option>
       </select>
-      
     </div>
     <div class="form-group mt-5">
       <label>ტევადობა</label>
       <div class="form-check">
-        <input type="radio" name="capacityInput" id="capacityInput2" class="form-check-input" value="2"
-          [(ngModel)]="capacity" />
+        <input
+          type="radio"
+          name="capacityInput"
+          id="capacityInput2"
+          class="form-check-input"
+          value="2"
+          [(ngModel)]="capacity"
+        />
         <label for="capacityInput2" class="form-check-label">2</label>
       </div>
       <div class="form-check">
-        <input type="radio" name="capacityInput" id="capacityInput3" class="form-check-input" value="3"
-          [(ngModel)]="capacity" />
+        <input
+          type="radio"
+          name="capacityInput"
+          id="capacityInput3"
+          class="form-check-input"
+          value="3"
+          [(ngModel)]="capacity"
+        />
         <label for="capacityInput3" class="form-check-label">3</label>
       </div>
       <div class="form-check">
-        <input type="radio" name="capacityInput" id="capacityInput4" class="form-check-input" value="4"
-          [(ngModel)]="capacity"/>
+        <input
+          type="radio"
+          name="capacityInput"
+          id="capacityInput4"
+          class="form-check-input"
+          value="4"
+          [(ngModel)]="capacity"
+        />
         <label for="capacityInput4" class="form-check-label">4</label>
       </div>
       <div class="form-check">
-        <input type="radio" name="capacityInput" id="capacityInput5" class="form-check-input" value="5"
-          [(ngModel)]="capacity"/>
+        <input
+          type="radio"
+          name="capacityInput"
+          id="capacityInput5"
+          class="form-check-input"
+          value="5"
+          [(ngModel)]="capacity"
+        />
         <label for="capacityInput5" class="form-check-label">5</label>
       </div>
       <div class="form-check">
-        <input type="radio" name="capacityInput" id="capacityInput6" class="form-check-input" value="6"
-          [(ngModel)]="capacity"/>
+        <input
+          type="radio"
+          name="capacityInput"
+          id="capacityInput6"
+          class="form-check-input"
+          value="6"
+          [(ngModel)]="capacity"
+        />
         <label for="capacityInput6" class="form-check-label">6</label>
       </div>
       <div class="form-check">
-        <input type="radio" name="capacityInput" id="capacityInput7" class="form-check-input" value="7"
-          [(ngModel)]="capacity"/>
+        <input
+          type="radio"
+          name="capacityInput"
+          id="capacityInput7"
+          class="form-check-input"
+          value="7"
+          [(ngModel)]="capacity"
+        />
         <label for="capacityInput7" class="form-check-label">7</label>
       </div>
       <div class="form-check">
-        <input type="radio" name="capacityInput" id="capacityInput8" class="form-check-input" value="8"
-          [(ngModel)]="capacity"/>
+        <input
+          type="radio"
+          name="capacityInput"
+          id="capacityInput8"
+          class="form-check-input"
+          value="8"
+          [(ngModel)]="capacity"
+        />
         <label for="capacityInput8" class="form-check-label">8</label>
       </div>
       <div class="form-check">
-        <input type="radio" name="capacityInput" id="capacityInput9" class="form-check-input" value="9"
-          [(ngModel)]="capacity"/>
+        <input
+          type="radio"
+          name="capacityInput"
+          id="capacityInput9"
+          class="form-check-input"
+          value="9"
+          [(ngModel)]="capacity"
+        />
         <label for="capacityInput9" class="form-check-label">9</label>
       </div>
       <div class="form-check">
-        <input type="radio" name="capacityInput" id="capacityInput10" class="form-check-input" value="10"
-          [(ngModel)]="capacity"/>
+        <input
+          type="radio"
+          name="capacityInput"
+          id="capacityInput10"
+          class="form-check-input"
+          value="10"
+          [(ngModel)]="capacity"
+        />
         <label for="capacityInput10" class="form-check-label">10</label>
       </div>
       <div class="form-check">
-        <input type="radio" name="capacityInput" id="capacityInputAll" class="form-check-input" value=""
-          [(ngModel)]="capacity"/>
+        <input
+          type="radio"
+          name="capacityInput"
+          id="capacityInputAll"
+          class="form-check-input"
+          value=""
+          [(ngModel)]="capacity"
+        />
         <label for="capacityInputAll" class="form-check-label">ყველა</label>
       </div>
     </div>
-    <button class="btn btn-primary mt-5" (click)="applyFilter()">გაფილტვრა</button>
+    <button class="btn btn-primary mt-5" (click)="applyFilter()">
+      გაფილტვრა
+    </button>
   </div>
 
-
-  <div *ngIf="cars" class="container-fluid">
-    <app-cars-card *ngFor="let car of cars" [car]="car"></app-cars-card>
+  <div class="container-fluid flexer">
+    <div *ngIf="cars" class="container-fluid">
+      <app-cars-card *ngFor="let car of cars" [car]="car"></app-cars-card>
+    </div>
+  
+    <ngx-skeleton-loader
+      *ngIf="cars.length < 1"
+      count="25"
+      [theme]="{
+        height: '350px',
+        width: '270px',
+        margin: '25px',
+        background: 'grey',
+        opacity: '0.6'
+      }"
+    ></ngx-skeleton-loader>
+  
+    <!-- ? პაგინაცია -->
+    <div *ngIf="totalPages > 1" class="pagination">
+      <button
+        *ngIf="currentPage !== 1 && currentPage > 10"
+        class="first_Page"
+        (click)="goToPage(1)"
+        [disabled]="currentPage === 1"
+      >
+        1
+      </button>
+      <button
+        *ngFor="let page of visiblePages"
+        [disabled]="page === currentPage"
+        (click)="goToPage(page)"
+      >
+        {{ page }}
+      </button>
+      <button
+        *ngIf="currentPage != totalPages - 1 && currentPage != totalPages"
+        class="last_Page"
+        (click)="goToPage(totalPages)"
+        [disabled]="currentPage === totalPages"
+      >
+        {{ totalPages }}
+      </button>
+    </div> 
   </div>
 
-  <ngx-skeleton-loader *ngIf="cars.length < 1" count="25"
-    [theme]="{height: '350px', width:'270px', margin:'25px', background: 'grey', opacity:'0.6'}"></ngx-skeleton-loader>
-</div>
-
-
-<!-- ? პაგინაცია -->
-<div *ngIf="totalPages > 1 "class="pagination">
-  <button *ngIf="currentPage !== 1 && currentPage > 10" class="first_Page" (click)="goToPage(1)" [disabled]="currentPage === 1">პირველი</button>
-  <button *ngFor="let page of visiblePages" [disabled]="page === currentPage" (click)="goToPage(page)">
-    {{ page }}
-  </button>
-  <button class="last_Page" (click)="goToPage(totalPages)" [disabled]="currentPage === totalPages">ბოლო</button>
 </div>

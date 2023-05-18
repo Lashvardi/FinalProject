@@ -30,37 +30,35 @@
       </div>
       <div class="form-floating mb-3">
         <input
-          type="text"
+          type="file"
           class="form-control"
-          id="imageUrl1"
-          placeholder="URL"
-          name="imageUrl1"
-          [(ngModel)]="car.imageUrl1"
+          id="image1"
+          name="image1"
+          (change)="onImageChange($event, 1)"
         />
-        <label for="imageUrl1">სურათი 1 (URL)</label>
+        <label for="image1">სურათი 1</label>
       </div>
       <div class="form-floating mb-3">
         <input
-          type="text"
+          type="file"
           class="form-control"
-          id="imageUrl2"
-          placeholder="URL"
-          name="imageUrl2"
-          [(ngModel)]="car.imageUrl2"
+          id="image2"
+          name="image2"
+          (change)="onImageChange($event, 2)"
         />
-        <label for="imageUrl2">სურათი 2 (URL)</label>
+        <label for="image2">სურათი 2</label>
       </div>
       <div class="form-floating mb-3">
         <input
-          type="text"
+          type="file"
           class="form-control"
-          id="imageUrl3"
-          placeholder="URL"
-          name="imageUrl3"
-          [(ngModel)]="car.imageUrl3"
+          id="image3"
+          name="image3"
+          (change)="onImageChange($event, 3)"
         />
-        <label for="imageUrl3">სურათი 3 (URL)</label>
+        <label for="image3">სურათი 3</label>
       </div>
+
       <div class="form-floating mb-3">
         <input
           type="number"

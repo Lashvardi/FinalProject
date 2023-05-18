@@ -19,6 +19,14 @@ export class AddCarComponent {
       console.log('Geolocation is not supported by this browser.');
     }
   }
+
+  selectedImages: File[] = [];
+  onImageChange(event: any, index: number) {
+    const files: FileList = event.target.files;
+    if (files.length > 0) {
+      this.selectedImages[index - 1] = files[0];
+    }
+  }
   car: Car = {
     id: 0,
     brand: '',
@@ -117,28 +125,33 @@ export class AddCarComponent {
   constructor(private getCarService: GetCarService) {}
 
   onSubmit(): void {
-    this.getCarService.addCar(this.car).subscribe((newCar: Car) => {
-      this.car.createdByEmail = localStorage.getItem('UserEmail') || '';
-      console.log(`Added new car: ${newCar}`);
-      this.car = {
-        id: 0,
-        brand: '',
-        model: '',
-        year: 0,
-        imageUrl1: '',
-        imageUrl2: '',
-        imageUrl3: '',
-        price: 0,
-        capacity: 0,
-        transmission: '',
-        createdBy: '',
-        fuelCapacity: 0,
-        city: '',
-        latitude: 0,
-        longitude: 0,
-        Multiplier: 1,
-        createdByEmail: '',
-      };
-    });
+    this.getCarService
+      .addCar(this.car, this.selectedImages)
+      .subscribe((newCar: Car) => {
+        this.car.createdByEmail = localStorage.getItem('UserEmail') || '';
+        console.log(`Added new car: ${newCar}`);
+        this.car = {
+          // Reset the car object after successful submission
+          id: 0,
+          brand: '',
+          model: '',
+          year: 0,
+          imageUrl1: '',
+          imageUrl2: '',
+          imageUrl3: '',
+          price: 0,
+          capacity: 0,
+          transmission: '',
+          createdBy: '',
+          fuelCapacity: 0,
+          city: '',
+          latitude: 0,
+          longitude: 0,
+          Multiplier: 1,
+          createdByEmail: '',
+        };
+
+        this.selectedImages = []; // Clear the selected images after successful submission
+      });
   }
 }

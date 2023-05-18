@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Car } from 'src/app/models/car';
 import { PaginatedData } from 'src/app/models/paginated';
@@ -13,13 +13,12 @@ export class FilteredComponent {
   // ? Car Variables
   cars: Car[] = [];
 
-
   // ? Pagination Variables
   public totalPages: number = 0;
   public currentPage: number = 1;
   visiblePages: number[] = [];
-  public startYear: number = 0
-  public endYear: number = 0
+  public startYear: number = 0;
+  public endYear: number = 0;
 
   // ? Filter Variables
   capacity: number = 0;
@@ -28,13 +27,14 @@ export class FilteredComponent {
   public cities: string[] = [];
   public selectedCapacity: number = 0;
 
-
-  constructor(public getCar: GetCarService, private router: Router, private route: ActivatedRoute) {
-    this.getCar.getCities().subscribe(
-      (cities) => {
-        this.cities = cities;
-      }
-    );
+  constructor(
+    public getCar: GetCarService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {
+    this.getCar.getCities().subscribe((cities) => {
+      this.cities = cities;
+    });
   }
 
   ngOnInit() {
@@ -50,7 +50,14 @@ export class FilteredComponent {
 
   GetPaginatedCars() {
     this.getCar
-      .getPaginatedCars(this.capacity, this.startYear, this.endYear, this.cityName, this.currentPage, 10)
+      .getPaginatedCars(
+        this.capacity,
+        this.startYear,
+        this.endYear,
+        this.cityName,
+        this.currentPage,
+        10
+      )
       .subscribe((paginatedData: PaginatedData<Car>) => {
         this.cars = paginatedData.data;
         this.totalPages = paginatedData.totalPages;
@@ -63,15 +70,11 @@ export class FilteredComponent {
     this.updateQueryParams();
     this.GetPaginatedCars();
   }
-  
-
 
   // ? Pagination Methods
   totalPagesArray(): number[] {
     return Array.from({ length: this.totalPages }, (_, index) => index + 1);
   }
-
-
 
   goToPage(page: number) {
     if (page >= 1 && page <= this.totalPages) {
@@ -81,17 +84,30 @@ export class FilteredComponent {
       this.updateVisiblePages();
     }
   }
-  
 
+  @HostListener('window:resize', ['$event'])
+  onWindowResize(event: Event) {
+    this.updateVisiblePages();
+  }
 
   updateVisiblePages() {
     const totalPages = this.totalPages;
     const currentPage = this.currentPage;
-    const start = Math.max(1, currentPage - 4);
-    const end = Math.min(start + 9, totalPages);
-    this.visiblePages = Array.from({ length: end - start + 1 }, (_, index) => start + index);
-  }
+    let start: number, end;
 
+    if (window.innerWidth < 600) {
+      start = Math.max(1, currentPage - 2);
+      end = Math.min(start + 4, totalPages);
+    } else {
+      start = Math.max(1, currentPage - 4);
+      end = Math.min(start + 9, totalPages);
+    }
+
+    this.visiblePages = Array.from(
+      { length: end - start + 1 },
+      (_, index) => start + index
+    );
+  }
 
   updateQueryParams() {
     const queryParams = {
@@ -103,11 +119,4 @@ export class FilteredComponent {
     };
     this.router.navigate([], { queryParams, queryParamsHandling: 'merge' });
   }
-  
-
-
-
-
-
-
 }
