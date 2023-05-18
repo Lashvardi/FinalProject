@@ -12,9 +12,8 @@ export class GetCarService {
   private static RESOURCE_URI: string = 'Car';
   private static Popular_URi: string = 'Car/popular';
   private static Favorite_URI: string = 'Users';
-  public static PAGINATED_URI: string = 'api/Car/paginated'
-  public static FILTER_URI: string = 'api/Car/filter'
-
+  public static PAGINATED_URI: string = 'api/Car/paginated';
+  public static FILTER_URI: string = 'api/Car/filter';
 
   constructor(private http: HttpClient) {}
 
@@ -33,32 +32,31 @@ export class GetCarService {
     pageSize: number = 10
   ): Observable<PaginatedData<Car>> {
     let params = new HttpParams();
-  
+
     if (capacity) {
       params = params.set('capacity', capacity.toString());
     }
-  
+
     if (startYear) {
       params = params.set('startYear', startYear.toString());
     }
-  
+
     if (endYear) {
       params = params.set('endYear', endYear.toString());
     }
-  
+
     if (city) {
       params = params.set('city', city);
     }
-  
-    params = params.set('pageIndex', pageIndex.toString()).set('pageSize', pageSize.toString());
-  
+
+    params = params
+      .set('pageIndex', pageIndex.toString())
+      .set('pageSize', pageSize.toString());
+
     const url = ServiceUrlBuilder.buildRootUrl(GetCarService.FILTER_URI);
-  
+
     return this.http.get<PaginatedData<Car>>(url, { params });
   }
-  
-
-  
 
   public GetCarById(id: number) {
     return this.http.get<Car>(
@@ -72,9 +70,6 @@ export class GetCarService {
     );
   }
 
-  getCarsByCapacity(capacity: number): Observable<Car[]> {
-    return this.http.get<Car[]>(ServiceUrlBuilder.buildUrl(`${GetCarService.RESOURCE_URI}/byCapacity?capacity=${capacity}`));
-  }
   public addCar(car: Car): Observable<Car> {
     const url = ServiceUrlBuilder.buildUrl(GetCarService.RESOURCE_URI);
     return this.http.post<Car>(url, car);
@@ -87,25 +82,6 @@ export class GetCarService {
         `${GetCarService.Favorite_URI}/${phoneNumber}/favorite-cars`
       )
     );
-  }
-
-  getCarsByYear(startYear: number, endYear: number) {
-    const url = `Car/byYear?startYear=${startYear}&endYear=${endYear}`;
-    return this.http.get<Car[]>(ServiceUrlBuilder.buildUrl(url));
-  }
-
-  public getCarsByCity(cityName: string) {
-    const url = `${GetCarService.RESOURCE_URI}/byCity?cityName=${cityName}`;
-    return this.http.get<Car[]>(ServiceUrlBuilder.buildUrl(url));
-  }
-
-  public getCarsByCityAndYear(
-    cityName: string,
-    startYear: number,
-    endYear: number
-  ) {
-    const url = `${GetCarService.RESOURCE_URI}/byCityAndYear?cityName=${cityName}&startYear=${startYear}&endYear=${endYear}`;
-    return this.http.get<Car[]>(ServiceUrlBuilder.buildUrl(url));
   }
 
   public getCities(): Observable<string[]> {
