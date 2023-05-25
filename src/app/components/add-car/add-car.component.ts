@@ -3,6 +3,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { Car } from 'src/app/models/car';
 import { GetCarService } from 'src/app/services/get-car.service';
 import { CarOption } from './carOption';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-add-car',
   templateUrl: './add-car.component.html',
@@ -122,7 +123,7 @@ export class AddCarComponent {
     carModel: new FormControl(''),
   });
 
-  constructor(private getCarService: GetCarService) {}
+  constructor(private getCarService: GetCarService, private route: Router, private router: Router) {}
 
   onSubmit(): void {
     this.getCarService
@@ -152,6 +153,9 @@ export class AddCarComponent {
         };
 
         this.selectedImages = []; // Clear the selected images after successful submission
+
       });
+
+      this.router.navigate(['/Filter']);
   }
 }

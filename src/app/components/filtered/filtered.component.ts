@@ -58,12 +58,22 @@ export class FilteredComponent {
         this.currentPage,
         10
       )
-      .subscribe((paginatedData: PaginatedData<Car>) => {
-        this.cars = paginatedData.data;
-        this.totalPages = paginatedData.totalPages;
-        this.updateVisiblePages();
-      });
+      .subscribe(
+        (paginatedData: PaginatedData<Car>) => {
+          this.cars = paginatedData.data;
+          this.totalPages = paginatedData.totalPages;
+          this.updateVisiblePages();
+        },
+        (error) => {
+          if (error.status === 400) {
+            // Hide all results or show an error message
+            this.cars = [];
+            this.totalPages = 0;
+          }
+        }
+      );
   }
+
 
   applyFilter() {
     this.currentPage = 1;
