@@ -2,56 +2,77 @@
   <div class="inner_container">
     <div class="header_container">
       <div class="title_side">
-        <h1 class="car_brand">{{car?.brand}}</h1>
-        <h2 class="car_model">{{car?.model}}/<span class="car_model year">{{car?.year}} წლის</span></h2>
-
+        <h1 class="car_brand">{{ car?.brand }}</h1>
+        <h2 class="car_model">
+          {{ car?.model }}/<span class="car_model year"
+            >{{ car?.year }} წლის</span
+          >
+        </h2>
       </div>
 
       <div class="favorite_side">
         <button class="favorite_button">
-          <button class="favorite_button" (click)="car && addToFavorites(car.id)">
-            <img class="hover_Red" src="../../../assets/favorite-icon.svg" alt="">
+          <button
+            class="favorite_button"
+            (click)="car && addToFavorites(car.id)"
+          >
+            <img
+              class="hover_Red"
+              src="../../../assets/favorite-icon.svg"
+              alt=""
+            />
           </button>
         </button>
       </div>
     </div>
 
     <div class="swiper_body">
-      <swiper *ngIf="car?.imageUrl1" [slidesPerView]="1" [spaceBetween]="10" [navigation]="true"
-        [pagination]="{ clickable: true }">
-        <ng-template swiperSlide><img class="slide_Image" [src]="car?.imageUrl1" alt=""></ng-template>
-        <ng-template swiperSlide><img class="slide_Image" [src]="car?.imageUrl2" alt=""></ng-template>
-        <ng-template swiperSlide><img class="slide_Image" [src]="car?.imageUrl3" alt=""></ng-template>
+      <swiper
+        *ngIf="car?.imageUrl1"
+        [slidesPerView]="1"
+        [spaceBetween]="10"
+        [navigation]="true"
+        [pagination]="{ clickable: true }"
+      >
+        <ng-template swiperSlide
+          ><img class="slide_Image" [src]="car?.imageUrl1" alt=""
+        /></ng-template>
+        <ng-template swiperSlide
+          ><img class="slide_Image" [src]="car?.imageUrl2" alt=""
+        /></ng-template>
+        <ng-template swiperSlide
+          ><img class="slide_Image" [src]="car?.imageUrl3" alt=""
+        /></ng-template>
       </swiper>
     </div>
 
     <div class="details_box">
       <div class="fuel flex-full">
-        <img src="../../../assets/fuel-icon.svg" alt="">
-        <span>{{car?.fuelCapacity}}ლ</span>
+        <img src="../../../assets/fuel-icon.svg" alt="" />
+        <span>{{ car?.fuelCapacity }}ლ</span>
       </div>
 
       <div class="gaerbox flex-full">
-        <img src="../../../assets/gearbox-icon.svg" alt="">
-        <span>{{car?.transmission}}</span>
-
+        <img src="../../../assets/gearbox-icon.svg" alt="" />
+        <span>{{ car?.transmission }}</span>
       </div>
 
       <div class="capacity flex-full">
-        <img src="../../../assets/capacity-icon.svg" alt="">
-        <span>{{car?.capacity}}კაცი</span>
+        <img src="../../../assets/capacity-icon.svg" alt="" />
+        <span>{{ car?.capacity }}კაცი</span>
       </div>
     </div>
 
-
     <div class="price_box">
       <div class="price_side">
-        <h1 class="price">{{car?.price}}₾/</h1>
+        <h1 class="price">{{ car?.price }}₾/</h1>
         <h2 class="per_day">დღიური</h2>
       </div>
 
       <div class="button_side">
-        <button (click)="car && onCarClick(car.id)" class="rent_button">იქირავე</button>
+        <button (click)="car && onCarClick(car.id)" class="rent_button">
+          იქირავე
+        </button>
       </div>
     </div>
   </div>

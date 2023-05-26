@@ -2,92 +2,41 @@
   <div class="container">
     <form (submit)="onSubmit()" class="needs-validation" novalidate>
       <div class="form-floating mb-3">
-        <app-custom-dropdown
-          [options]="carBrands"
-          placeholder="მარკა"
-          (valueChange)="onCarBrandChange($event)"
-          [(ngModel)]="car.brand"
-        ></app-custom-dropdown>
+        <app-custom-dropdown [options]="carBrands" placeholder="მარკა" (valueChange)="onCarBrandChange($event)"
+          [(ngModel)]="car.brand"></app-custom-dropdown>
       </div>
       <div class="form-floating mb-3">
-        <app-custom-dropdown
-          [options]="getCarModelOptions()"
-          placeholder="მოდელი"
-          (valueChange)="onCarModelChange($event)"
-          [(ngModel)]="car.model"
-        ></app-custom-dropdown>
+        <app-custom-dropdown [options]="getCarModelOptions()" placeholder="მოდელი"
+          (valueChange)="onCarModelChange($event)" [(ngModel)]="car.model"></app-custom-dropdown>
       </div>
       <div class="form-floating mb-3">
-        <input
-          type="number"
-          class="form-control"
-          id="year"
-          placeholder="წელი"
-          name="year"
-          [(ngModel)]="car.year"
-        />
+        <input type="number" class="form-control" id="year" placeholder="წელი" name="year" [(ngModel)]="car.year" />
         <label for="year">წელი</label>
       </div>
       <div class="form-floating mb-3">
-        <input
-          type="file"
-          class="form-control"
-          id="image1"
-          name="image1"
-          (change)="onImageChange($event, 1)"
-        />
+        <input type="file" class="form-control" id="image1" name="image1" (change)="onImageChange($event, 1)" />
         <label for="image1">სურათი 1</label>
       </div>
       <div class="form-floating mb-3">
-        <input
-          type="file"
-          class="form-control"
-          id="image2"
-          name="image2"
-          (change)="onImageChange($event, 2)"
-        />
+        <input type="file" class="form-control" id="image2" name="image2" (change)="onImageChange($event, 2)" />
         <label for="image2">სურათი 2</label>
       </div>
       <div class="form-floating mb-3">
-        <input
-          type="file"
-          class="form-control"
-          id="image3"
-          name="image3"
-          (change)="onImageChange($event, 3)"
-        />
+        <input type="file" class="form-control" id="image3" name="image3" (change)="onImageChange($event, 3)" />
         <label for="image3">სურათი 3</label>
       </div>
 
       <div class="form-floating mb-3">
-        <input
-          type="number"
-          class="form-control"
-          id="price"
-          placeholder="ფასი"
-          name="price"
-          [(ngModel)]="car.price"
-        />
+        <input type="number" class="form-control" id="price" placeholder="ფასი" name="price" [(ngModel)]="car.price" />
         <label for="price">ფასი</label>
       </div>
       <div class="form-floating mb-3">
-        <input
-          type="number"
-          class="form-control"
-          id="capacity"
-          placeholder="ტევადობა"
-          name="capacity"
-          [(ngModel)]="car.capacity"
-        />
+        <input type="number" class="form-control" id="capacity" placeholder="ტევადობა" name="capacity"
+          [(ngModel)]="car.capacity" />
         <label for="capacity">ტევადობა</label>
       </div>
       <div class="form-floating mb-3">
-        <select
-          class="form-select"
-          id="transmission"
-          name="transmission"
-          [(ngModel)]="car.transmission"
-        >
+        <select class="form-select" id="transmission" name="transmission" [(ngModel)]="car.transmission">
           <option value="" selected>აირჩიეთ ტრანსმისია</option>
           <option value="მექანიკური">მექანიკური</option>
           <option value="ავტომატიკა">ავტომატიკა</option>
@@ -95,25 +44,12 @@
         </select>
       </div>
       <div class="form-floating mb-3">
-        <input
-          type="number"
-          class="form-control"
-          id="fuelCapacity"
-          placeholder="ბაკის ტევადობა"
-          name="fuelCapacity"
-          [(ngModel)]="car.fuelCapacity"
-        />
+        <input type="number" class="form-control" id="fuelCapacity" placeholder="ბაკის ტევადობა" name="fuelCapacity"
+          [(ngModel)]="car.fuelCapacity" />
         <label for="fuelCapacity">ბაკის ტევადობა</label>
       </div>
       <div class="form-floating mb-3">
-        <input
-          type="text"
-          class="form-control"
-          id="city"
-          placeholder="ქალაქი"
-          name="city"
-          [(ngModel)]="car.city"
-        />
+        <input type="text" class="form-control" id="city" placeholder="ქალაქი" name="city" [(ngModel)]="car.city" />
         <label for="city">ქალაქი</label>
       </div>
       <button class="btn btn-primary" type="submit">შენახვა</button>
@@ -124,13 +60,6 @@
 </div>
 
 <!-- This Is Bad Practice -->
-<link
-  rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
-/>
-<link
-  rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
-  integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
-  crossorigin="anonymous"
-/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+  integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
