@@ -77,9 +77,6 @@ export class GetCarService {
     formData.append('brand', car.brand);
     formData.append('model', car.model);
     formData.append('year', car.year.toString());
-    formData.append('imageUrl1', car.imageUrl1);
-    formData.append('imageUrl2', car.imageUrl2);
-    formData.append('imageUrl3', car.imageUrl3);
     formData.append('price', car.price.toString());
     formData.append('capacity', car.capacity.toString());
     formData.append('transmission', car.transmission);

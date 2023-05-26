@@ -151,7 +151,7 @@ export class AddCarComponent {
           createdByEmail: '',
         };
 
-        this.selectedImages = []; // Clear the selected images after successful submission
+        this.selectedImages = [];
       });
   }
 }
