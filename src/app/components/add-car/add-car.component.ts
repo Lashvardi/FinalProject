@@ -154,6 +154,6 @@ export class AddCarComponent {
 
         this.selectedImages = [];
       });
-      this.router.navigate(['/Filter']);
+    this.router.navigate(['/Filter']);
   }
 }

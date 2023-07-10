@@ -26,6 +26,7 @@
 
         &:hover{
           .hover_Red{
+            cursor: pointer;
             filter: invert(49%) sepia(68%) saturate(3687%) hue-rotate(333deg) brightness(92%) contrast(102%);
           }
         }

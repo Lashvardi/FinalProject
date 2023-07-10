@@ -24,11 +24,11 @@ SwiperCore.use([Pagination, Navigation, Scrollbar, A11y, Virtual]);
 export class CarsCardComponent {
   @Input() car: Car | undefined;
   constructor(private http: HttpClient, public router: Router) {}
-  backendURL: string = 'https://localhost:7149/resources/';
+  backendURL: string = 'https://rentcar.webwide.ge/resources/';
 
   addToFavorites(carId: number) {
     const PhoneNumber = localStorage.getItem('PhoneNumber') || '';
-    const url = `https://localhost:7149/api/Users/${PhoneNumber}/favorites/${carId}`;
+    const url = `https://rentcar.webwide.ge/api/Users/${PhoneNumber}/favorites/${carId}`;
 
     this.http.post(url, {}).subscribe(
       () => {

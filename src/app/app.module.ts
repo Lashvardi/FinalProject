@@ -38,6 +38,7 @@ import { TakenCarsComponent } from './components/taken-cars/taken-cars.component
 import { ThankyouRentingComponent } from './components/thankyou-renting/thankyou-renting.component';
 import { CarsListComponent } from './components/cars-list/cars-list.component';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
+import { MyCarsComponent } from './components/my-cars/my-cars.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -70,6 +71,7 @@ import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
     TakenCarsComponent,
     ThankyouRentingComponent,
     CarsListComponent,
+    MyCarsComponent,
   ],
   imports: [
     BrowserModule,

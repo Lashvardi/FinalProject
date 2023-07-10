@@ -166,70 +166,7 @@ export class MapComponent {
     type: 'FeatureCollection',
     features: [],
   };
-  async onMarkerClick(
-    marker: { latitude: number; longitude: number },
-    event: any
-  ) {
-    if (this.userLocation) {
-      const markerCoords = event.lngLat;
 
-      const distanceInMeters = this.userLocation.distanceTo(markerCoords);
-      const distanceInKilometers = distanceInMeters / 1000;
-      console.log(`დისტანცია: ${distanceInKilometers.toFixed(2)} კილომეტრი`);
-
-      this.infoBoxImageSrc = this.car?.imageUrl1 || null;
-      this.infoBoxModel = this.car?.model || null;
-      this.infoBoxMark = this.car?.brand || null;
-      this.infoBoxDistance = `დისტანცია: ${distanceInKilometers.toFixed(
-        2
-      )} კილომეტრი`;
-
-      this.getDirections(this.userLocation, [
-        marker.longitude,
-        marker.latitude,
-      ]);
-    } else {
-      console.warn('User location not available');
-    }
-    navigator.geolocation.getCurrentPosition(
-      (position) => {
-        const userCoords: [number, number] = [
-          position.coords.longitude,
-          position.coords.latitude,
-        ];
-        this.userLocation = new mapboxgl.LngLat(userCoords[0], userCoords[1]);
-        this.getDirections(userCoords, [marker.longitude, marker.latitude]);
-      },
-      (error) => {
-        console.error('Error getting user location:', error);
-      }
-    );
-  }
-
-  convertToGeoJSON(
-    markers: Array<{
-      latitude: number;
-      longitude: number;
-      icon: string;
-      type?: string;
-    }>
-  ): any {
-    const features = markers.map((marker) => ({
-      type: 'Feature',
-      geometry: {
-        type: 'Point',
-        coordinates: [marker.longitude, marker.latitude], // include coordinates property
-      },
-      properties: {
-        icon: marker.icon,
-      },
-    }));
-
-    return {
-      type: 'FeatureCollection',
-      features: features,
-    };
-  }
   GenerateMarker(
     cars: Car[]
   ): Array<{ latitude: number; longitude: number; type?: string }> {
@@ -276,6 +213,7 @@ export class MapComponent {
     );
   }
 
+  //TODO: Calculates the distance between two points in km's
   async onLayerMarkerClick(event: any) {
     const coordinates = event.lngLat;
     const marker = { latitude: coordinates.lat, longitude: coordinates.lng };

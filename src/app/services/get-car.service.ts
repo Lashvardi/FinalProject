@@ -64,6 +64,12 @@ export class GetCarService {
     );
   }
 
+  public getCarByOwner(owner: string) {
+    return this.http.get<Car[]>(
+      ServiceUrlBuilder.buildUrl(`${GetCarService.RESOURCE_URI}/byPhone?PhoneNumber=${owner}`)
+    );
+  }
+
   public getPopularCars() {
     return this.http.get<Car[]>(
       ServiceUrlBuilder.buildUrl(GetCarService.Popular_URi)
@@ -73,20 +79,16 @@ export class GetCarService {
   public addCar(car: Car, images: File[]): Observable<Car> {
     const formData: FormData = new FormData();
 
-    formData.append('id', car.id.toString());
     formData.append('brand', car.brand);
     formData.append('model', car.model);
     formData.append('year', car.year.toString());
     formData.append('price', car.price.toString());
     formData.append('capacity', car.capacity.toString());
+    formData.append('fuelCapacity', car.fuelCapacity.toString());
     formData.append('transmission', car.transmission);
     formData.append('createdBy', car.createdBy);
     formData.append('createdByEmail', car.createdByEmail);
-    formData.append('fuelCapacity', car.fuelCapacity.toString());
     formData.append('city', car.city);
-    formData.append('latitude', car.latitude.toString());
-    formData.append('longitude', car.longitude.toString());
-    formData.append('Multiplier', car.Multiplier.toString());
 
     for (let i = 0; i < images.length; i++) {
       formData.append(`image${i + 1}`, images[i]);

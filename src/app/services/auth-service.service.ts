@@ -7,7 +7,7 @@ import { User } from '../models/User';
   providedIn: 'root'
 })
 export class AuthServiceService {
-  private apiUrl = "https://localhost:7149/api/Users";
+  private apiUrl = "https://rentcar.webwide.ge/api/Users";
   constructor(private http: HttpClient){}
 
 

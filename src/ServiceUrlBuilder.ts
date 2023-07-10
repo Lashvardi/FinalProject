@@ -1,5 +1,5 @@
 export class ServiceUrlBuilder {
-  private static DOMAIN_URL = 'https://localhost:7149/';
+  private static DOMAIN_URL = 'https://rentcar.webwide.ge/';
   private static API_POSTFIX = 'api/';
 
   public static buildUrl(url: string) {

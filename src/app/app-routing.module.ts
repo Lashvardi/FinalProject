@@ -67,7 +67,6 @@ const routes: Routes = [
   {
     path: 'Filter',
     component: FilteredComponent,
-    canActivate: [AuthGuard],
   },
 ];
 

@@ -9,6 +9,10 @@
   </div>
 
   <div class="right_side">
+    
+  <div *ngIf="AuthService.isLoggedIn()" [routerLink]="'/CarAdd'" class="nav_item pointer hoverable">
+    <i style="color: #5b667f; font-size: 19px;" class="bi bi-plus-circle-fill"></i>
+  </div>
     <div *ngIf="AuthService.isLoggedIn()" class="nav_item">
       <img
         class="hoverable"
@@ -26,14 +30,16 @@
         ><img src="../../../assets/settings-icon.svg" alt=""
       /></a>
     </div>
+
     <div class="nav_item">
       <button
-        [routerLink]="'/Authorization'"
+        [routerLink]="'/AuthorizationUser'"
         *ngIf="!AuthService.isLoggedIn()"
         class="Login_button"
       >
         რეგისტრაცია
       </button>
+
       <button
         *ngIf="AuthService.isLoggedIn()"
         (click)="AuthService.logout()"
